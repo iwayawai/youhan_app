@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2023_02_27_074250) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.string "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -63,21 +64,31 @@ ActiveRecord::Schema.define(version: 2023_02_27_074250) do
   end
 
   create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "ingredients", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "members", force: :cascade do |t|
+    t.string "name" , null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
+    t.boolean "is_deleted", default: "false"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "recipes", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "star", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

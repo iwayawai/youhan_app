@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  #管理者用
-  # URL /admin/sign_in ...
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-  sessions: "admin/sessions"
-}
-
   # 会員用
   # URL /users/sign_in ...
   devise_for :users, controllers: {
@@ -12,5 +6,26 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  scope module: :public do
+    root to:"homes#top"
+    get "/about"=>"homes#about", as:"about"
+    
+    resources :users
+    
+
+
+  #管理者用
+  # URL /admin/sign_in ...
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+  sessions: "admin/sessions"
+}
+
+  namespace :admin do
+    root to:"users#index"
+    resources :users, only: [:index,:show,:edit,:update]
+    resources :comments, only: [:index,:destroy]
+    resources :genres, only: [:index,:create,:edit,:update]
+
+  end
+
 end
