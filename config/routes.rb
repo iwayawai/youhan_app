@@ -8,7 +8,21 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to:"homes#top"
-    get "/about"=>"homes#about", as:"about"
+    get "about"=>"homes#about", as:"about"
+    
+    resources :users, only:[:show] do
+      collection do
+        get 'information/edit' => "users#edit"
+        patch 'information' => "users#update"
+        get 'unsubscribe' => "users#unsubscribe"
+        patch 'withdraw' => "users#withdraw"
+      end 
+    end 
+    
+    resources :recipes do
+      resources :favorites, only:[:index, :create, :destroy] 
+      resources :comments, only:[:index, :create, :destroy]
+    end
     
   end
     
