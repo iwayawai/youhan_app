@@ -1,0 +1,20 @@
+<header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+    <% if admin_signed_in? %>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mr-3"><%= link_to "会員一覧", admin_root_path %></li>
+      <li class="nav-item mr-3"><%= link_to "ジャンル一覧", admin_genres_path %></li>
+      <li class="nav-item mr-3"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+    </ul>
+
+    <% else %>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mr-3"><%= link_to "新規登録", new_user_registration_path %></li>
+      <li class="nav-item mr-3"><%=link_to "ログイン", new_user_session_path %></li>
+      <li class="nav-item mr-3"><%= link_to "ABOUT", about_path %></li>
+    </ul>
+    <% end %>
+    </div>
+  </nav>
+</header>
