@@ -53,42 +53,49 @@ ActiveRecord::Schema.define(version: 2023_02_27_074250) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "comment", null: false
+    t.integer "member_id"
+    t.integer "recipe_id"
+    t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "amount", null: false
+    t.string "name"
+    t.string "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "members", force: :cascade do |t|
-    t.string "name" , null: false
-    t.string "email", null: false
-    t.string "encrypted_password", null: false
-    t.boolean "is_deleted", default: "false"
+    t.string "name"
+    t.string "email"
+    t.string "encrypted_password"
+    t.boolean "is_deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "introduction", null: false
-    t.integer "star", null: false
+    t.integer "genre_id"
+    t.integer "member_id"
+    t.integer "ingredient_id"
+    t.string "name"
+    t.text "introduction"
+    t.integer "star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

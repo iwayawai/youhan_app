@@ -2,10 +2,8 @@ class Public::RecipesController < ApplicationController
   
   def new
     @recipe=Recipe.new
+    @genres=Genre.all
   end
   
-  def create
-  
-  end 
 
 end

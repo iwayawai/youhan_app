@@ -25,7 +25,7 @@ Rails.application.configure do
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
-    config.action_controller.perform_caching = false
+    config.action_controller.perform_caching = true
 
     config.cache_store = :null_store
   end
@@ -34,14 +34,16 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   
   # 開発環境でメールを送るためのホストの設定
-  host = 'localhost:3000'
+  host = '0374acec86114d488b558662ab8ad847.vfs.cloud9.ap-northeast-1.amazonaws.com'
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
+  
+  config.action_mailer.delivery_method = :letter_opener_web
 
   # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise

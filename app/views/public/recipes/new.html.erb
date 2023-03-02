@@ -6,10 +6,10 @@
 <%= f.text_field :name %>
 
 やる気度：
-
+<%= f.select :star, ["★",1], ["★★", 2], ["★★★", 3 ],  prompt: "選択" %>
 
 ジャンル：
-
+<%= f.collection_select(:genre_id, @genres, :id, :name, {prompt:"選択"}) %>
 
 レシピ説明文：
 <%= f.text_area :introduction %>
