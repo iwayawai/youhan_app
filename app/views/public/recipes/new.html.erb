@@ -1,37 +1,40 @@
+<%= render 'layouts/public' %>
 <h3>新規レシピ投稿</h3>
 
-<%= form_with model @recipe, url: recipes_path, method: :post do |f| %>
+<%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
 
 レシピ名：
 <%= f.text_field :name %>
 
 やる気度：
-<%= f.select :star, ["★",1], ["★★", 2], ["★★★", 3 ],  prompt: "選択" %>
+<%= f.select :star,[ ["★",1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %>
 
 ジャンル：
-<%= f.collection_select(:genre_id, @genres, :id, :name, {prompt:"選択"}) %>
+<%= f.collection_select(:genre_id, @genres, :id, :name, {prompt:"選択"}) %><br>
 
 レシピ説明文：
-<%= f.text_area :introduction %>
+<%= f.text_area :introduction %><br>
 
-レシピ画像・動画：
-<%= f.file_field :video %>
-<%= f.file_field :image, accept:"image/*" %>
+レシピ動画：
+<%= f.file_field :video %><br>
+
+レシピ画像：
+<%= f.file_field :image, accept:"image/*" %><br>
 
 調理時間：
-<%= f.text_field :time %>
+<%= f.text_field :time %><br>
 
 費用目安：
-<%= f.text_field :price %>
+<%= f.text_field :price %><br>
 
 食材（分量）：
-<%= f.text_area :ingredients %>
+<%= f.text_area :ingredient %><br>
 
 手順：
-<%= f.text_area :procedure %>
+<%= f.text_area :procedure %><br>
 
 ポイント：
-<%= f.text_area :point %>
+<%= f.text_area :point %><br>
 
 <%= f.submit '新規投稿' %>
 <% end %>
