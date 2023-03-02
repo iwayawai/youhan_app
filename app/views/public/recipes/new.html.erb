@@ -7,16 +7,31 @@
 
 やる気度：
 
+
 ジャンル：
 
+
+レシピ説明文：
+<%= f.text_area :introduction %>
+
 レシピ画像・動画：
+<%= f.file_field :video %>
+<%= f.file_field :image, accept:"image/*" %>
 
 調理時間：
+<%= f.text_field :time %>
 
 費用目安：
+<%= f.text_field :price %>
 
 食材（分量）：
+<%= f.text_area :ingredients %>
 
 手順：
+<%= f.text_area :procedure %>
 
 ポイント：
+<%= f.text_area :point %>
+
+<%= f.submit '新規投稿' %>
+<% end %>

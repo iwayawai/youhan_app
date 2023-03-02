@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   # 会員用
   # URL /users/sign_in ...
-  devise_for :user, controllers: {
+  devise_for :users, controllers: {
   registrations: "public/registrations",
-  sessions: 'public/sessions'
+  sessions: 'public/sessions',
+  passwords: 'public/passwords'
 }
 
   scope module: :public do
