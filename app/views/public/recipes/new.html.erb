@@ -1,0 +1,22 @@
+<h3>新規レシピ投稿</h3>
+
+<%= form_with model @recipe, url: recipes_path, method: :post do |f| %>
+
+レシピ名：
+<%= f.text_field :name %>
+
+やる気度：
+
+ジャンル：
+
+レシピ画像・動画：
+
+調理時間：
+
+費用目安：
+
+食材（分量）：
+
+手順：
+
+ポイント：
