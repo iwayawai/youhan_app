@@ -2,13 +2,15 @@ class Public::RecipesController < ApplicationController
   
   def new
     @recipe=Recipe.new
-    @genres=Genre.all
   end
   
   def create
     @recipe=Recipe.new(recipe_params)
-    @recipe.save
+    if @recipe.save
     redirect_to recipe_path(@recipe.id)
+    else
+    render :new
+    end 
   end
   
   def show

@@ -85,14 +85,14 @@ ActiveRecord::Schema.define(version: 2023_02_27_074250) do
   create_table "recipes", force: :cascade do |t|
     t.integer "genre_id"
     t.integer "member_id"
-    t.string "ingredient"
+    t.text "ingredient"
     t.string "name"
     t.text "introduction"
     t.integer "star"
     t.string "time"
     t.string "price"
-    t.string "procedure"
-    t.string "point"
+    t.text "procedure"
+    t.text "point"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
