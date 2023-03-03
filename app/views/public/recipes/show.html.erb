@@ -1,0 +1,24 @@
+<%= render 'layouts/public' %>
+
+<% if @recipe.image.present? %>
+  <% if @recipe.image.content_type.include? ('image/') %>
+    <%= image_tag @recipe.image %>
+  <% else %>
+    <%= video_tag rails_blob_path(@recipe.video) %>
+  <% end %>
+<% end %>
+
+<%= @recipe.name %>
+やる気度：<%= @recipe.star %>
+ジャンル：<%= @recipe.genre.name %>
+
+<%= @recipe.introduction %>
+
+調理時間：<%= @recipe.time %>
+費用目安：<%= @recipe.price %>
+
+食材：<%= @recipe.ingredient %>
+
+手順：<%= @recipe.procedure %>
+
+ポイント：<%= @recipe.point %>
