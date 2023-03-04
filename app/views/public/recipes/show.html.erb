@@ -2,7 +2,7 @@
 
 <% if @recipe.image.present? %>
   <% if @recipe.image.content_type.include? ('image/') %>
-    <%= image_tag @recipe.image %>
+    <%= image_tag @recipe.image, size: "300x300" %>
   <% else %>
     <%= video_tag rails_blob_path(@recipe.video) %>
   <% end %>
@@ -22,3 +22,21 @@
 手順：<%= @recipe.procedure %>
 
 ポイント：<%= @recipe.point %>
+
+<div>
+  <p>コメント件数：<%= @recipe.comments.count %></p>
+  <% @recipe.comments.each do |comment| %>
+    <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
+    <%= comment.user.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% if comment.user == current_user %>
+      <%= button_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@recipe, @comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "投稿" %>
+  <% end %>
+</div>

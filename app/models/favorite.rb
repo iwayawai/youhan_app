@@ -1,5 +1,6 @@
 class Favorite < ApplicationRecord
   
-  belongs_to :member, :recipe
+  belongs_to :user
+  belongs_to :recipe
   
 end

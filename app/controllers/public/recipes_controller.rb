@@ -1,11 +1,12 @@
 class Public::RecipesController < ApplicationController
   
   def new
-    @recipe=Recipe.new
+    @recipe = Recipe.new
   end
   
   def create
-    @recipe=Recipe.new(recipe_params)
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
     if @recipe.save
     redirect_to recipe_path(@recipe.id)
     else
@@ -14,7 +15,8 @@ class Public::RecipesController < ApplicationController
   end
   
   def show
-    @recipe=Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id])
+    @comment = Comment.new
   end
   
   private

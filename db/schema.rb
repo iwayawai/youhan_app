@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2023_02_27_074250) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "member_id"
+    t.integer "user_id"
     t.integer "recipe_id"
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2023_02_27_074250) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "member_id"
+    t.integer "user_id"
     t.integer "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -73,18 +73,9 @@ ActiveRecord::Schema.define(version: 2023_02_27_074250) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "members", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "encrypted_password"
-    t.boolean "is_deleted"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "recipes", force: :cascade do |t|
     t.integer "genre_id"
-    t.integer "member_id"
+    t.integer "user_id"
     t.text "ingredient"
     t.string "name"
     t.text "introduction"
