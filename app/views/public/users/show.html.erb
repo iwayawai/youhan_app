@@ -1,2 +1,24 @@
 <%= render 'layouts/public' %>
-<h3>投稿レシピ一覧</h3>
+
+<%= render 'layouts/user', user:@user %>
+
+<h3>投稿レシピ一覧 全<%= @recipes.count %>件</h3>
+
+<% @recipes.each do |recipe| %>
+
+<%= link_to recipe_path(recipe.id) do %>
+<% if recipe.image.present? %>
+  <% if recipe.image.content_type.include? ('image/') %>
+    <%= image_tag recipe.image, size: "300x300" %>
+  <% else %>
+    <%= video_tag rails_blob_path(recipe.video) %>
+  <% end %>
+<% end %>
+<% end %>
+
+<%= recipe.name %>
+ジャンル：<%= recipe.genre.name %>
+やる気度：<%= recipe.star %>
+<% end %>
+
+<%= paginate @recipes %>

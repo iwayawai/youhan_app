@@ -1,0 +1,16 @@
+
+<%= image_tag user.get_profile_image(50,50) %>
+<%= user.name %>
+
+<%= button_to recipe_favorites_path, method: :get do %>
+<%= image_tag('heart_on.png') %>
+いいね
+<% end %>
+
+<%= button_to recipe_comments_path, method: :get do %>
+<%= image_tag('star.jpeg') %>
+コメント
+<% end %>
+
+<%= button_to "レシピ投稿", recipes_path %>
+<%= butoon_to "会員情報編集", information_edit_users_path, method: :get %>

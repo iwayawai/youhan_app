@@ -19,6 +19,14 @@ class Public::RecipesController < ApplicationController
     @comment = Comment.new
   end
   
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end 
+  
+  def index
+    @recipe_page = Recipe.page(params[:page])
+  end 
+  
   private
   def recipe_params
     params.require(:recipe).permit(:name, :introduction, :star, :genre_id, :time, :price, :ingredient, :procedure, :point, :video, :image)
