@@ -4,5 +4,5 @@
 消去されます。<br>
 退会する場合は、「退会する」をクリックしてください。<br>
 
-<%= button_to "退会しない", user_path(current_user), method: :get %>
-<%= button_to "退会する", withdraw_users_path, method: :patch, data:{ confirm: "本当に退会しますか？" } %>
+<%= link_to "退会しない", user_path(current_user) %>
+<%= link_to "退会する", withdraw_users_path, method: :patch, data:{ confirm: "本当に退会しますか？" } %>

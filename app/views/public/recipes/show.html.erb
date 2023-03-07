@@ -1,60 +1,59 @@
-<%= render 'layouts/public' %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-4">
+    <%= render 'layouts/public' %>
+    </div>
 
-<% if @recipe.image.present? %>
-  <% if @recipe.image.content_type.include? ('image/') %>
-    <%= image_tag @recipe.image, size: "300x300" %>
-  <% else %>
-    <%= video_tag rails_blob_path(@recipe.video) %>
-  <% end %>
-<% end %>
+    <div class = "col-lg-8">
+    <% if @recipe.image.present? %>
+      <% if @recipe.image.content_type.include? ('image/') %>
+      <%= image_tag @recipe.image, size: "300x300" %>
+      <% else %>
+      <%= video_tag rails_blob_path(@recipe.video) %>
+      <% end %>
+    <% end %>
 
-<%= @recipe.name %>
-やる気度：<%= @recipe.star %>
-ジャンル：<%= @recipe.genre.name %>
+    <%= @recipe.name %>
+    やる気度：<%= @recipe.star %>
+    ジャンル：<%= @recipe.genre.name %>
 
-<%= @recipe.introduction %>
+    <%= @recipe.introduction %>
+ 
+    調理時間：<%= @recipe.time %>
+    費用目安：<%= @recipe.price %>
 
-調理時間：<%= @recipe.time %>
-費用目安：<%= @recipe.price %>
+    食材：<%= @recipe.ingredient %>
+    手順：<%= @recipe.procedure %>
 
-食材：<%= @recipe.ingredient %>
+    ポイント：<%= @recipe.point %>
 
-手順：<%= @recipe.procedure %>
-
-ポイント：<%= @recipe.point %>
-
-<% if @recipe.favorited_by?(current_user) %>
-    <p>
-      <%= button_to recipe_favorite_path(@recipe), method: :delete do %>
+    <% if @recipe.favorited_by?(current_user) %>
+      <%= link_to recipe_favorite_path(@recipe), method: :delete do %>
         <%= image_tag 'pink_heart', size: "20x20" %>
         <%= @recipe.favorites.count %> いいね
       <% end %>
-    </p>
     <% else %>
-    <p>
-      <%= button_to recipe_favorites_path(@recipe), method: :post do %>
+      <%= link_to recipe_favorites_path(@recipe), method: :post do %>
         <%= image_tag 'black_heart', size: "20x20" %>
         <%= @recipe.favorites.count %> いいね
       <% end %>
-    </p>
-<% end %>
-<div>
-  <p>
-  <%= image_tag 'blue_star', size: "20x20" %>
-  <%= @recipe.comments.count %>コメント
-  </p>
-  <% @recipe.comments.each do |comment| %>
-    <p><%= image_tag comment.user.get_profile_image(50,50) %></p>
-    <%= comment.user.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-    <% if comment.user == current_user %>
-      <%= button_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete %>
     <% end %>
-  <% end %>
-</div>
-<div>
-  <%= form_with model: [@recipe, @comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "投稿" %>
-  <% end %>
+
+    <%= image_tag 'blue_star', size: "20x20" %>
+    <%= @recipe.comments.count %>コメント
+    <% @recipe.comments.each do |comment| %>
+      <%= image_tag comment.user.get_profile_image(50,50) %>
+      <%= comment.user.name %>
+      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+      <% if comment.user == current_user %>
+        <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class:"btn btn-danger" %>
+      <% end %>
+    <% end %>
+
+    <%= form_with model: [@recipe, @comment] do |f| %>
+      <%= f.text_area :comment, rows: '5' %>
+      <%= f.submit "投稿", class:"btn btn-success" %>
+    <% end %>
+    </div>
+  </div>
 </div>
