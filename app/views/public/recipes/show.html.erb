@@ -26,18 +26,23 @@
 <% if @recipe.favorited_by?(current_user) %>
     <p>
       <%= button_to recipe_favorite_path(@recipe), method: :delete do %>
-        ♥<%= @recipe.favorites.count %> いいね
+        <%= image_tag 'pink_heart', size: "20x20" %>
+        <%= @recipe.favorites.count %> いいね
       <% end %>
     </p>
     <% else %>
     <p>
       <%= button_to recipe_favorites_path(@recipe), method: :post do %>
-        ♡<%= @recipe.favorites.count %> いいね
+        <%= image_tag 'black_heart', size: "20x20" %>
+        <%= @recipe.favorites.count %> いいね
       <% end %>
     </p>
 <% end %>
 <div>
-  <p>☆<%= @recipe.comments.count %>コメント</p>
+  <p>
+  <%= image_tag 'blue_star', size: "20x20" %>
+  <%= @recipe.comments.count %>コメント
+  </p>
   <% @recipe.comments.each do |comment| %>
     <p><%= image_tag comment.user.get_profile_image(50,50) %></p>
     <%= comment.user.name %>

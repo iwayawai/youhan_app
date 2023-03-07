@@ -1,9 +1,7 @@
 <%= render 'layouts/public' %>
 <%= render 'layouts/user', user:@user, recipe:@recipe %>
 
-<h3>投稿レシピ一覧 全<%= @recipes.count %>件</h3>
-
-<% @recipes.each do |recipe| %>
+<% @favorite_recipes.each do |recipe|%>
 
 <%= link_to recipe_path(recipe.id) do %>
 <% if recipe.image.present? %>
@@ -12,12 +10,14 @@
   <% else %>
     <%= video_tag rails_blob_path(recipe.video) %>
   <% end %>
+  <% end %>
 <% end %>
-<% end %>
-
+  
 <%= recipe.name %>
-ジャンル：<%= recipe.genre.name %>
+
+<%= link_to user_path(@user.id) do %>
+<%= image_tag @user.get_profile_image(50,50) %>
+<% end %>
+<%= recipe.user.name %>
 やる気度：<%= recipe.star %>
 <% end %>
-
-<%= paginate @recipes %>

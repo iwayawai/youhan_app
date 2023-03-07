@@ -2,15 +2,17 @@
 <%= image_tag user.get_profile_image(50,50) %>
 <%= user.name %>
 
-<%= button_to recipe_favorites_path, method: :get do %>
-<%= image_tag('heart_on.png') %>
+<%= button_to recipe_favorites_path(recipe.id), method: :get do %>
+<%= image_tag 'pink_heart', size: "20x20" %>
 いいね
 <% end %>
 
-<%= button_to recipe_comments_path, method: :get do %>
-<%= image_tag('star.jpeg') %>
+<%= button_to recipe_comments_path(recipe.id), method: :get do %>
+<%= image_tag 'blue_star', size: "20x20" %>
 コメント
 <% end %>
 
-<%= button_to "レシピ投稿", recipes_path %>
-<%= butoon_to "会員情報編集", information_edit_users_path, method: :get %>
+<% if user == current_user %>
+<%= button_to "レシピ投稿", new_recipe_path, method: :get %>
+<%= button_to "会員情報編集", information_edit_users_path, method: :get %>
+<% end %>

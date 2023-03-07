@@ -1,8 +1,9 @@
 class Public::UsersController < ApplicationController
   
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @recipes = @user.recipes.page(params[:page])
+    @recipe = Recipe.find(params[:id])
   end 
   
 end
