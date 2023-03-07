@@ -1,0 +1,24 @@
+<%= render 'layouts/public' %>
+<h3>会員情報編集</h3>
+
+<%= form_with model:@user, url:information_edit_users_path, method: :patch do |f| %>
+
+プロフィール画像：
+<%= f.file_field :image, accept:"image/*" %><br>
+
+ユーザーネーム：
+<%= f.text_field :name %><br>
+
+メールアドレス：
+<%= f.email_field :email %><br>
+
+パスワード（6文字以上）：
+<%= f.password_field :password %><br>
+
+パスワード（確認用）：
+<%= f.password_field :password_confirmation %><br>
+
+<%= f.submit '更新' %>
+<% end %>
+
+退会する方は<a href="/users/unsubscribe">こちら</a>

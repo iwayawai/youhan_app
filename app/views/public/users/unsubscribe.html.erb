@@ -1,0 +1,8 @@
+<h1>本当に退会しますか？</h1>
+退会すると、会員登録情報や<br>
+これまでの投稿レシピ・いいね・コメントが<br>
+消去されます。<br>
+退会する場合は、「退会する」をクリックしてください。<br>
+
+<%= button_to "退会しない", user_path(current_user), method: :get %>
+<%= button_to "退会する", withdraw_users_path, method: :patch, data:{ confirm: "本当に退会しますか？" } %>
