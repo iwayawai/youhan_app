@@ -1,0 +1,30 @@
+<%= render 'layouts/public' %>
+<%= render 'layouts/user', user:@user, recipe:@recipe %>
+
+<h3>コメントしたレシピ一覧</h3>
+<% @comment_recipes.each do |recipe|%>
+
+  <%= link_to recipe_path(recipe.id) do %>
+    <% if recipe.image.present? %>
+      <% if recipe.image.content_type.include? ('image/') %>
+      <%= image_tag recipe.image, size: "300x300" %>
+      <% else %>
+      <%= video_tag rails_blob_path(recipe.video) %>
+      <% end %>
+    <% end %>
+  <% end %>
+  
+<%= recipe.name %>
+
+<%= link_to user_path(@user.id) do %>
+  <%= image_tag @user.get_profile_image(50,50) %>
+<% end %>
+
+<%= recipe.user.name %>
+
+<% recipe.comments.each do |comment| %>
+  <%= comment.created_at.strftime('%Y/%m/%d') %>
+  <%= comment.comment %>
+<% end %>
+
+<% end %>

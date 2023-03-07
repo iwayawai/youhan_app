@@ -1,23 +1,26 @@
 <%= render 'layouts/public' %>
 <%= render 'layouts/user', user:@user, recipe:@recipe %>
 
+<h3>いいねしたレシピ一覧</h3>
 <% @favorite_recipes.each do |recipe|%>
 
-<%= link_to recipe_path(recipe.id) do %>
-<% if recipe.image.present? %>
-  <% if recipe.image.content_type.include? ('image/') %>
-    <%= image_tag recipe.image, size: "300x300" %>
-  <% else %>
-    <%= video_tag rails_blob_path(recipe.video) %>
+  <%= link_to recipe_path(recipe.id) do %>
+    <% if recipe.image.present? %>
+      <% if recipe.image.content_type.include? ('image/') %>
+      <%= image_tag recipe.image, size: "300x300" %>
+      <% else %>
+      <%= video_tag rails_blob_path(recipe.video) %>
+      <% end %>
+    <% end %>
   <% end %>
-  <% end %>
-<% end %>
   
 <%= recipe.name %>
 
 <%= link_to user_path(@user.id) do %>
-<%= image_tag @user.get_profile_image(50,50) %>
+  <%= image_tag @user.get_profile_image(50,50) %>
 <% end %>
+
 <%= recipe.user.name %>
 やる気度：<%= recipe.star %>
+
 <% end %>
