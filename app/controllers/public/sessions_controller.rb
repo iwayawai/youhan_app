@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+    #ゲストログイン機能
+  def guest_sign_in
+    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー"
+    end
+    sign_in user
+    redirect_to user_path(usser.id), notice: 'ゲストユーザーとしてログインしました。'
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     root to:"homes#top"
     get "about"=>"homes#about", as:"about"
     
+    
     resources :users, only:[:show] do
       collection do
         get 'information/edit' => "users#edit"
