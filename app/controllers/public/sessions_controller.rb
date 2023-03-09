@@ -8,7 +8,7 @@ class Public::SessionsController < Devise::SessionsController
       user.name = "ゲストユーザー"
     end
     sign_in user
-    redirect_to user_path(usser.id), notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to user_path(user.id), notice: 'ゲストユーザーとしてログインしました。'
   end
   # before_action :configure_sign_in_params, only: [:create]
 
