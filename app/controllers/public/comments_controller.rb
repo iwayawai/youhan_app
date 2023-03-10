@@ -14,8 +14,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def index
-    @recipe = Recipe.find(params[:recipe_id])
-    @user = @recipe.user
+    @user = User.find(params[:id])
     comments = Comment.where(user_id: @user.id).pluck(:recipe_id)
     @comment_recipes = Recipe.find(comments)
   end

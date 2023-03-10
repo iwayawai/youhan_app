@@ -1,5 +1,5 @@
 <%= render 'layouts/public' %>
-<%= render 'layouts/user', user:@user, recipe:@recipe %>
+<%= render 'layouts/user', user:@user %>
 
 <h3>いいねしたレシピ一覧</h3>
 <% @favorite_recipes.each do |recipe|%>
@@ -22,5 +22,4 @@
 
 <%= recipe.user.name %>
 やる気度：<%= recipe.star %>
-
 <% end %>

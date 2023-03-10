@@ -5,14 +5,14 @@
   <%= user.name %>
 　
   <div class = "row mt-5">
-  <%= link_to recipe_favorites_path(recipe.id) do %>
+  <%= link_to favorites_recipes_path do %>
   <%= image_tag 'pink_heart', size: "20x20" %>
   いいね
   <% end %>
   </div>
   
   <div class = "row mt-3">
-  <%= link_to recipe_comments_path(recipe.id) do %>
+  <%= link_to comments_recipes_path do %>
   <%= image_tag 'blue_star', size: "20x20" %>
   コメント
   <% end %>

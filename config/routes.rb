@@ -26,8 +26,14 @@ Rails.application.routes.draw do
     end 
     
     resources :recipes do
-      resources :favorites, only:[:index, :create, :destroy] 
-      resources :comments, only:[:index, :create, :destroy]
+      resources :favorites, only:[:create, :destroy] 
+        collection do
+        get 'favorites' => "favorites#index"
+        end 
+      resources :comments, only:[:create, :destroy]
+        collection do
+        get 'comments' => "comments#index"
+        end 
     end
     
   end
