@@ -32,6 +32,16 @@ class Public::RecipesController < ApplicationController
     else
     @recipes = Recipe.where("ingredient LIKE ? or name LIKE ? ",'%' + params[:search] + '%','%' + params[:search] + '%').page(params[:page])
     end 
+    
+    if params[:star] == 1
+      @recipes = Recipe.where(star:'1').page(params[:page])
+    elsif params[:star] == 2
+      @recipes = Recipe.where(star:'2').page(params[:page])
+    elsif params[:star] == 3
+      @recipes = Recipe.where(star:'3').page(params[:page])
+    else
+      @recipes = Recipe.page(params[:page])
+    end 
   end 
   
   private

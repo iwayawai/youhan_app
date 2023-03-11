@@ -1,10 +1,5 @@
-<div class = "container">
-  <div class = "row">
-    <div class = "col-lg-4">
     <%= render 'layouts/public' %>
-    </div>
 
-    <div class = "col-lg-8">
     <% if @recipe.image.present? %>
       <% if @recipe.image.content_type.include? ('image/') %>
       <%= image_tag @recipe.image, size: "300x300" %>
@@ -56,6 +51,3 @@
       <%= f.text_area :comment, rows: '5' %>
       <%= f.submit "投稿", class:"btn btn-success" %>
     <% end %>
-    </div>
-  </div>
-</div>
