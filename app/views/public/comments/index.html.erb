@@ -2,7 +2,7 @@
 <%= render 'layouts/user', user:@user %>
 
 <h3>コメントしたレシピ一覧</h3>
-<% @comment_recipes.each do |recipe|%>
+<% @comment_recipes.each do |recipe| %>
 
   <%= link_to recipe_path(recipe.id) do %>
     <% if recipe.image.present? %>
@@ -16,8 +16,8 @@
   
 <%= recipe.name %>
 
-<%= link_to user_path(@user.id) do %>
-  <%= image_tag @user.get_profile_image(50,50) %>
+<%= link_to user_path(recipe.user.id) do %>
+  <%= image_tag recipe.user.get_profile_image(50,50) %>
 <% end %>
 
 <%= recipe.user.name %>

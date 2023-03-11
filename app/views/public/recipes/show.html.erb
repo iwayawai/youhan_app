@@ -42,7 +42,9 @@
     <%= image_tag 'blue_star', size: "20x20" %>
     <%= @recipe.comments.count %>コメント
     <% @recipe.comments.each do |comment| %>
+      <%= link_to user_path(@user.id) do %>
       <%= image_tag comment.user.get_profile_image(50,50) %>
+      <% end %>
       <%= comment.user.name %>
       <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
       <% if comment.user == current_user %>
