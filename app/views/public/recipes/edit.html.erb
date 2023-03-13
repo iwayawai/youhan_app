@@ -38,6 +38,6 @@
 <%= f.submit '更新・保存' %>
 
 <% if @recipe.user == current_user %>
-<%= link_to '削除', recipe_path(@recipe), method: :delete  %>
+<%= link_to '削除', recipe_path(@recipe), method: :delete, class:"btn btn-danger" %>
 <% end %>
 <% end %>

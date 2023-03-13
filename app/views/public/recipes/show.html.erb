@@ -25,13 +25,13 @@
     <% if @recipe.favorited_by?(current_user) %>
       <%= link_to recipe_favorite_path(@recipe), method: :delete do %>
         <%= image_tag 'pink_heart', size: "20x20" %>
-        <%= @recipe.favorites.count %> いいね
-      <% end %>
+        <% end %>
+      <%= @recipe.favorites.count %>いいね
     <% else %>
       <%= link_to recipe_favorites_path(@recipe), method: :post do %>
         <%= image_tag 'black_heart', size: "20x20" %>
-        <%= @recipe.favorites.count %> いいね
-      <% end %>
+        <% end %>
+      <%= @recipe.favorites.count %>いいね
     <% end %>
 
     <%= image_tag 'blue_star', size: "20x20" %>

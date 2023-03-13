@@ -7,7 +7,7 @@
 <%= f.text_field :name, placeholder: "きゅうりとハムのサラダ" %>
 
 やる気度：
-<%= f.select :star,[ ["★",1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %>
+<%= f.select :star,[ ["★", 1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %>
 
 ジャンル：
 <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %><br>
