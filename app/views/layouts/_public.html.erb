@@ -9,7 +9,7 @@
 
       やる気度：
       <%= form_tag({controller:"recipes", action:"index"}, method: :get) do %>
-      <%= select_tag :star, options_for_select([["★",1], ["★★", 2], ["★★★", 3]]) %>
+      <%= select_tag :star, options_for_select([['---選択してください---', ''], ["★", 1], ["★★", 2], ["★★★", 3]]) %>
       <%= submit_tag '検索' %>
       <% end %>
 
