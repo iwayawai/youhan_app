@@ -1,0 +1,23 @@
+<h3>会員一覧</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>会員一覧</th>
+      <th>ユーザー名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.is_deleted '退会':'有効' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= paginate @users %>
