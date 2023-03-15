@@ -38,8 +38,6 @@ Rails.application.routes.draw do
     
   end
     
-
-
   #管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -49,10 +47,10 @@ Rails.application.routes.draw do
   namespace :admin do
     root to:"users#index"
     resources :users, only: [:show,:edit,:update]
-    resources :comments, only: [:index,:destroy]
+    resources :comments, only: [:show,:destroy]
     resources :genres, only: [:index,:create,:edit,:update]
 
   end
 
- mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

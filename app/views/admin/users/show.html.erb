@@ -1,0 +1,13 @@
+<h3><%= @user %>さんの会員情報詳細</h3>
+
+会員ID
+<%= @user.id %>
+ユーザー名
+<%= @user.name %>
+メールアドレス
+<%= @user.email %>
+会員ステータス
+<%= @user.is_deleted %>
+
+<%= link_to "編集する", edit_admin_user_path(@user), class:"btn btn-success" %>
+<%= link_to "コメント一覧", admin_comment_path(@user), class:"btn btn-primary" %>
