@@ -1,13 +1,32 @@
-<h3><%= @user %>さんの会員情報詳細</h3>
+<%= render 'layouts/admin' %>
+<div class = "container">
+  <div class = "row">
+  <h3><%= @user.name %>さんの会員情報詳細</h3>
+  </div>
 
-会員ID
-<%= @user.id %>
-ユーザー名
-<%= @user.name %>
-メールアドレス
-<%= @user.email %>
-会員ステータス
-<%= @user.is_deleted %>
-
-<%= link_to "編集する", edit_admin_user_path(@user), class:"btn btn-success" %>
-<%= link_to "コメント一覧", admin_comment_path(@user), class:"btn btn-primary" %>
+  <div class="row mt-5">
+  会員ID
+  <div style="padding-left :100px;"><%= @user.id %></div>
+  </div>
+  
+  <div class="row mt-5">
+  ユーザー名
+  <div style="padding-left :65px;"><%= @user.name %></div>
+  </div>
+  
+  <div class="row mt-5">
+  メールアドレス
+  <div style="padding-left :30px;"><%= @user.email %></div>
+  </div>
+  
+  <div class="row mt-5">
+  会員ステータス
+  <div style="padding-left :30px;">
+  <p class="<%= @user.is_deleted ? "text-danger" : "text-success" %>"><%= @user.is_deleted ? '退会':'有効' %></p></div>
+  </div>
+  
+  <div class="mt-5 ml-5">
+  <%= link_to "削除", admin_user_path(@user), class:"btn btn-danger" %>
+  <%= link_to "コメント一覧", admin_user_comments_path(@user), class:"btn btn-primary" %>
+  </div>
+</div>

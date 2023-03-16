@@ -1,13 +1,17 @@
-<h3>ジャンル一覧・追加</h3>
+<%= render 'layouts/admin' %>
+<div class = "container">
+  <div class = "row">
+  <h3>ジャンル一覧・追加</h3>
+  </div>
 
-ジャンル名
-<%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
-<%= f.text_field :name %>
+  ジャンル名
+  <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
+    <%= f.text_field :name %>
 
-<%= f.submit '新規登録' %>
-<% end %>
+    <%= f.submit '新規登録' %>
+  <% end %>
 
-<table class="table mt-5">
+  <table class="table mt-5">
     <thead>
       <tr>
         <th>ジャンル</th>
@@ -22,4 +26,5 @@
       </tr>
     </tbody>
     <% end %>
-</table>
+  </table>
+</div>

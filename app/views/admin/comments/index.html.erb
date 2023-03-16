@@ -1,0 +1,27 @@
+<%= render 'layouts/admin' %>
+<div class = "container">
+  <div class = "row">
+  <h3><%= @user.name %>さんのコメント一覧</h3>
+  </div>
+
+  <table class ="table mt-5">
+    <thead>
+      <tr>
+        <th>レシピ名</th>
+        <th>ユーザー名</th>
+        <th>コメント</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @comment_recipes.each do |recipe| %>
+      <tr>
+        <td><%= recipe.name %></td>
+        <td><%= recipe.user.name %></td>
+        <td><%= recipe.comments %></td>
+        <td><%= link_to "削除", admin_user_comment_path(@user, @comment), method: :delete, class:"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<%= paginate @comments %>

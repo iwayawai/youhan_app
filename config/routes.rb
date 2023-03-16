@@ -46,8 +46,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to:"users#index"
-    resources :users, only: [:show,:edit,:update]
-    resources :comments, only: [:show,:destroy]
+    
+    resources :users, only: [:show,:destroy] do
+      resources :comments, only: [:index,:destroy]
+    end 
+    
     resources :genres, only: [:index,:create,:edit,:update]
 
   end
