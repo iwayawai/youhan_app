@@ -8,6 +8,12 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end 
   
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    render 'index'
+  end 
+  
   private
   def user_params
     params.require(:user).permit(

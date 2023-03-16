@@ -30,6 +30,12 @@ class Public::RecipesController < ApplicationController
     redirect_to recipe_path(@recipe.id)
   end
   
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    render 'index'
+  end
+  
   def index
     if params[:search] == nil
       @recipes = Recipe.page(params[:page])
