@@ -33,7 +33,7 @@ class Public::RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    render 'index'
+    redirect_to root_path
   end
   
   def index

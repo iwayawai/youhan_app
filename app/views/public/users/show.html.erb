@@ -19,7 +19,9 @@
     <% end %>
     <% end %>
 
+    <%= link_to recipe_path(recipe.id) do %>
     <%= recipe.name %>
+    <% end %>
     ジャンル：<%= recipe.genre.name %>
     やる気度：<%= recipe.star %>
     <% end %>

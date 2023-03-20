@@ -35,7 +35,7 @@
 ポイント：
 <%= f.text_area :point, rows: '3' %><br>
 
-<%= f.submit '更新・保存' %>
+<%= f.submit '更新・保存', class:"btn btn-success" %>
 
 <% if @recipe.user == current_user %>
 <%= link_to '削除', recipe_path(@recipe), method: :delete, class:"btn btn-danger" %>

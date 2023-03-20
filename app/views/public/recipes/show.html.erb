@@ -57,3 +57,7 @@
       <%= @recipe.favorites.count %>いいね
       <%= @recipe.comments.count %>コメント
       <% end %>
+      
+      <% if @recipe.user == current_user %>
+        <%= link_to "編集", edit_recipe_path(@recipe), class:"btn btn-warning" %>
+      <% end %>
