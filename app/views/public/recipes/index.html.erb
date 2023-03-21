@@ -1,9 +1,13 @@
 <%= render 'layouts/public' %>
-<h3>レシピ一覧 全<%= @recipes.count %>件</h3>
+<div class = "container">
+  <div class = "row mt-3">
+  <h3>レシピ一覧 全<%= @recipes.count %>件</h3>
+  </div>
 
-<% @recipes.each do |recipe| %>
-
-  <%= link_to recipe_path(recipe.id) do %>
+  <% @recipes.each do |recipe| %>
+  <div class = "card" style="width: 22rem ;">
+    <div class = "card-body">
+    <%= link_to recipe_path(recipe.id) do %>
     <% if recipe.image.present? %>
       <% if recipe.image.content_type.include? ('image/') %>
       <%= image_tag recipe.image, size: "300x300" %>
@@ -11,14 +15,19 @@
       <%= video_tag rails_blob_path(recipe.video) %>
       <% end %>
     <% end %>
-  <% end %>
-  <%= recipe.name %>
-  
-  <%= link_to user_path(recipe.user.id) do %>
-    <%= image_tag recipe.user.get_profile_image(50,50) %>
-  <% end %>
-
-  <%= recipe.user.name %>
-  <% end %>
+    <% end %>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= recipe.name %></li>
+      <li class="list-group-item"> 
+      <%= link_to user_path(recipe.user.id) do %>
+        <%= image_tag recipe.user.get_profile_image(50,50) %>
+      <% end %>
+      <%= recipe.user.name %>
+      <% end %>
+      </li>
+    </ul>
+  </div>
 
 <%= paginate @recipes %>
+</div>

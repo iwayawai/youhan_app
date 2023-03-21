@@ -4,14 +4,14 @@
   <h3 class = "ml-3 mb-3">人気レシピ一覧</h3>
   </div>
   
-  <div class = "row">
-    <% @recipes.each do |recipe| %>
-    <div class = "col-lg-4">
-      <div class = "row ml-2 mt-3">やる気度
-      <% recipe.star.times do %>
-        ★
-      <% end %>
-      </div>
+  
+  <% @recipes.each do |recipe| %>
+    <div class = "row ml-2 mt-3">やる気度
+    <% recipe.star.times do %>
+      ★
+    <% end %>
+    </div>
+      
     <div class = "card" style="width: 22rem ;">
       <div class = "card-body">
       <%= link_to recipe_path(recipe.id) do %>
@@ -34,7 +34,5 @@
         </li>
       </ul>
     </div>
-    </div>
-  </div>
 </div>
 <% end %>

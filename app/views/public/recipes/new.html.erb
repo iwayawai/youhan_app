@@ -1,40 +1,43 @@
 <%= render 'layouts/public' %>
-<h3>新規レシピ投稿</h3>
+<div class = "container">
+  <div class = "row mt-3">
+  <h3>新規レシピ投稿</h3>
+  </div>
 
-<%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
+  <%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
 
-レシピ名：
-<%= f.text_field :name, placeholder: "きゅうりとハムのサラダ" %>
+  レシピ名：
+  <%= f.text_field :name, placeholder: "きゅうりとハムのサラダ" %>
 
-やる気度：
-<%= f.select :star,[ ["★", 1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %>
+  やる気度：
+  <%= f.select :star,[ ["★", 1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %>
 
-ジャンル：
-<%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %><br>
+  ジャンル：
+  <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %><br>
 
-レシピ説明文：
-<%= f.text_area :introduction, rows: '3', placeholder:"時短＆おいしい！シンプルなサラダ" %><br>
+  レシピ説明文：
+  <%= f.text_area :introduction, rows: '3', placeholder:"時短＆おいしい！シンプルなサラダ" %><br>
 
-レシピ動画：
-<%= f.file_field :video, accept:"video/mp4" %><br>
+  レシピ動画：
+  <%= f.file_field :video, accept:"video/mp4" %><br>
 
-レシピ画像：
-<%= f.file_field :image, accept:"image/*" %><br>
+  レシピ画像：
+  <%= f.file_field :image, accept:"image/*" %><br>
 
-調理時間：
-<%= f.text_field :time, placeholder: "５分" %><br>
+  調理時間：
+  <%= f.text_field :time, placeholder: "５分" %><br>
 
-費用目安：
-<%= f.text_field :price, placeholder: "１００円" %><br>
+  費用目安：
+  <%= f.text_field :price, placeholder: "１００円" %><br>
 
-食材（分量）：
-<%= f.text_area :ingredient, rows: '5', placeholder:"きゅうり・・・１本" %><br>
+  食材（分量）：
+  <%= f.text_area :ingredient, rows: '5', placeholder:"きゅうり・・・１本" %><br>
 
-手順：
-<%= f.text_area :procedure, rows: '8', placeholder:"①きゅうりを一口サイズに輪切り。" %><br>
+  手順：
+  <%= f.text_area :procedure, rows: '8', placeholder:"①きゅうりを一口サイズに輪切り。" %><br>
 
-ポイント：
-<%= f.text_area :point, rows: '3', placeholder:"きゅうりを薄く切ること！" %><br>
+  ポイント：
+  <%= f.text_area :point, rows: '3', placeholder:"きゅうりを薄く切ること！" %><br>
 
-<%= f.submit '新規投稿' %>
-<% end %>
+  <%= f.submit '新規投稿' %>
+  <% end %>

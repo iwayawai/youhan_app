@@ -1,43 +1,47 @@
 <%= render 'layouts/public' %>
-<h3>レシピ編集</h3>
-<%= form_with model: @recipe, url:recipe_path, method: :patch do |f| %>
+<div class = "container">
+  <div class = "row mt-3">
+  <h3>レシピ編集</h3>
+  </div>
+  
+  <%= form_with model: @recipe, url:recipe_path, method: :patch do |f| %>
 
-レシピ名：
-<%= f.text_field :name %>
+  レシピ名：
+  <%= f.text_field :name %>
 
-やる気度：
-<%= f.select :star,[ ["★",1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %>
+  やる気度：
+  <%= f.select :star,[ ["★",1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %>
 
-ジャンル：
-<%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %><br>
+  ジャンル：
+  <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %><br>
 
-レシピ説明文：
-<%= f.text_area :introduction, rows: '3' %><br>
+  レシピ説明文：
+  <%= f.text_area :introduction, rows: '3' %><br>
 
-レシピ動画：
-<%= f.file_field :video, accept:"video/mp4" %><br>
+  レシピ動画：
+  <%= f.file_field :video, accept:"video/mp4" %><br>
 
-レシピ画像：
-<%= f.file_field :image, accept:"image/*" %><br>
+  レシピ画像：
+  <%= f.file_field :image, accept:"image/*" %><br>
 
-調理時間：
-<%= f.text_field :time %><br>
+  調理時間：
+  <%= f.text_field :time %><br>
 
-費用目安：
-<%= f.text_field :price %><br>
+  費用目安：
+  <%= f.text_field :price %><br>
 
-食材（分量）：
-<%= f.text_area :ingredient, rows: '5' %><br>
+  食材（分量）：
+  <%= f.text_area :ingredient, rows: '5' %><br>
 
-手順：
-<%= f.text_area :procedure, rows: '8' %><br>
+  手順：
+  <%= f.text_area :procedure, rows: '8' %><br>
 
-ポイント：
-<%= f.text_area :point, rows: '3' %><br>
+  ポイント：
+  <%= f.text_area :point, rows: '3' %><br>
 
-<%= f.submit '更新・保存', class:"btn btn-success" %>
+  <%= f.submit '更新・保存', class:"btn btn-success" %>
 
-<% if @recipe.user == current_user %>
-<%= link_to '削除', recipe_path(@recipe), method: :delete, class:"btn btn-danger" %>
-<% end %>
-<% end %>
+  <% if @recipe.user == current_user %>
+  <%= link_to '削除', recipe_path(@recipe), method: :delete, class:"btn btn-danger" %>
+  <% end %>
+  <% end %>
