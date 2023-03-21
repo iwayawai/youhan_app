@@ -4,28 +4,33 @@
     <div class = "col-lg-4">
     <%= render 'layouts/user', user:@user %>
     </div>
-  </div>
     <div class = "col-lg-8">
     <h3>投稿レシピ一覧 全<%= @recipes.count %>件</h3>
     <% @recipes.each do |recipe| %>
-
-    <%= link_to recipe_path(recipe.id) do %>
-    <% if recipe.image.present? %>
-      <% if recipe.image.content_type.include? ('image/') %>
-      <%= image_tag recipe.image, size: "300x300" %>
-      <% else %>
-      <%= video_tag rails_blob_path(recipe.video) %>
+    <div class = "card" style="width: 22rem ;">
+      <div class = "card-body">
+      <%= link_to recipe_path(recipe.id) do %>
+        <% if recipe.image.present? %>
+          <% if recipe.image.content_type.include? ('image/') %>
+          <%= image_tag recipe.image, size: "300x300" %>
+          <% else %>
+          <%= video_tag rails_blob_path(recipe.video) %>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-    <% end %>
-
-    <%= link_to recipe_path(recipe.id) do %>
-    <%= recipe.name %>
-    <% end %>
-    ジャンル：<%= recipe.genre.name %>
-    やる気度：<%= recipe.star %>
-    <% end %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+        <%= link_to recipe_path(recipe.id) do %>
+          <%= recipe.name %>
+        <% end %>
+        </li>
+        <li class="list-group-item">ジャンル：<%= recipe.genre.name %></li>
+        <li class="list-group-item">やる気度：<%= recipe.star %></li>
+      </ul>
+      <% end %>
 
     <%= paginate @recipes %>
     </div>
+  </div>
 </div>

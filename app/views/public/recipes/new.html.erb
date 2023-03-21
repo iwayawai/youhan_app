@@ -6,38 +6,38 @@
 
   <%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
 
-  レシピ名：
-  <%= f.text_field :name, placeholder: "きゅうりとハムのサラダ" %>
+  <div class = "mt-2">レシピ名：
+  <%= f.text_field :name, placeholder: "きゅうりとハムのサラダ" %></div>
 
-  やる気度：
-  <%= f.select :star,[ ["★", 1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %>
+  <div class = "mt-2">やる気度：
+  <%= f.select :star,[ ["★", 1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %></div>
 
-  ジャンル：
-  <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %><br>
+  <div class = "mt-2">ジャンル：
+  <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %></div>
 
-  レシピ説明文：
-  <%= f.text_area :introduction, rows: '3', placeholder:"時短＆おいしい！シンプルなサラダ" %><br>
+  <div class = "mt-2">レシピ説明文：</div>
+  <%= f.text_area :introduction, size: "50x5", placeholder:"時短＆おいしい！シンプルなサラダ" %><br>
 
-  レシピ動画：
-  <%= f.file_field :video, accept:"video/mp4" %><br>
+  <div class = "mt-2">レシピ動画：
+  <%= f.file_field :video, accept:"video/mp4" %></div>
 
-  レシピ画像：
-  <%= f.file_field :image, accept:"image/*" %><br>
+  <div class = "mt-2">レシピ画像：
+  <%= f.file_field :image, accept:"image/*" %></div>
 
-  調理時間：
-  <%= f.text_field :time, placeholder: "５分" %><br>
+  <div class = "mt-2">調理時間：
+  <%= f.text_field :time, placeholder: "５分" %></div>
 
-  費用目安：
-  <%= f.text_field :price, placeholder: "１００円" %><br>
+  <div class = "mt-2">費用目安：
+  <%= f.text_field :price, placeholder: "１００円" %></div>
 
-  食材（分量）：
-  <%= f.text_area :ingredient, rows: '5', placeholder:"きゅうり・・・１本" %><br>
+  <div class = "mt-2">食材（分量）：</div>
+  <%= f.text_area :ingredient, size: "50x5", placeholder:"きゅうり・・・１本" %><br>
 
-  手順：
-  <%= f.text_area :procedure, rows: '8', placeholder:"①きゅうりを一口サイズに輪切り。" %><br>
+  <div class = "mt-2">手順：</div>
+  <%= f.text_area :procedure, size: "50x5", placeholder:"①きゅうりを一口サイズに輪切り。" %><br>
 
-  ポイント：
-  <%= f.text_area :point, rows: '3', placeholder:"きゅうりを薄く切ること！" %><br>
+  <div class = "mt-2">ポイント：</div>
+  <%= f.text_area :point, size: "50x5", placeholder:"きゅうりを薄く切ること！" %><br>
 
   <%= f.submit '新規投稿' %>
   <% end %>
