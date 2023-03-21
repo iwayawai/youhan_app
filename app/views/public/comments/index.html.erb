@@ -1,30 +1,42 @@
 <%= render 'layouts/public' %>
-<%= render 'layouts/user', user:@user %>
-
-<h3>コメントしたレシピ一覧</h3>
-<% @comment_recipes.each do |recipe| %>
-
-  <%= link_to recipe_path(recipe.id) do %>
-    <% if recipe.image.present? %>
-      <% if recipe.image.content_type.include? ('image/') %>
-      <%= image_tag recipe.image, size: "300x300" %>
-      <% else %>
-      <%= video_tag rails_blob_path(recipe.video) %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-4">
+    <%= render 'layouts/user', user:@user %>
+    </div>
+    
+    <div class = "col-lg-8">
+    <h3>コメントしたレシピ一覧</h3>
+    <% @comment_recipes.each do |recipe| %>
+    <div class = "card" style="width: 22rem ;">
+      <div class = "card-body">
+      <%= link_to recipe_path(recipe.id) do %>
+        <% if recipe.image.present? %>
+          <% if recipe.image.content_type.include? ('image/') %>
+          <%= image_tag recipe.image, size: "300x300" %>
+          <% else %>
+          <%= video_tag rails_blob_path(recipe.video) %>
+          <% end %>
+        <% end %>
       <% end %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= recipe.name %></li>
+        <li class="list-group-item">
+        <%= link_to user_path(recipe.user.id) do %>
+          <%= image_tag recipe.user.get_profile_image(50,50) %>
+        <% end %>
+        <%= recipe.user.name %>
+        </li>
+        <li class="list-group-item">
+        <% recipe.comments.each do |comment| %>
+        <%= comment.created_at.strftime('%Y/%m/%d') %>
+        <%= comment.comment %>
+        <% end %>
+        </li>
+      </ul>
+      </div>
     <% end %>
-  <% end %>
-  
-<%= recipe.name %>
-
-<%= link_to user_path(recipe.user.id) do %>
-  <%= image_tag recipe.user.get_profile_image(50,50) %>
-<% end %>
-
-<%= recipe.user.name %>
-
-<% recipe.comments.each do |comment| %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %>
-  <%= comment.comment %>
-<% end %>
-
-<% end %>
+    </div>
+  </div>
+</div>

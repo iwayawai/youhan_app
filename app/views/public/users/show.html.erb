@@ -4,6 +4,7 @@
     <div class = "col-lg-4">
     <%= render 'layouts/user', user:@user %>
     </div>
+    
     <div class = "col-lg-8">
     <h3>投稿レシピ一覧 全<%= @recipes.count %>件</h3>
     <% @recipes.each do |recipe| %>
@@ -26,7 +27,7 @@
         <% end %>
         </li>
         <li class="list-group-item">ジャンル：<%= recipe.genre.name %></li>
-        <li class="list-group-item">やる気度：<%= recipe.star %></li>
+        <li class="list-group-item">やる気度★：<%= recipe.star %></li>
       </ul>
       <% end %>
 

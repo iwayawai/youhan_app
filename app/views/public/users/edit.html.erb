@@ -1,24 +1,27 @@
 <%= render 'layouts/public' %>
-<h3>会員情報編集</h3>
+<div class = "container">
+  <div class = "row">
+  <h3 class = "row mt-3 ml-2">会員情報編集</h3>
+  </div>
 
-<%= form_with model:@user, url:information_edit_users_path, method: :patch do |f| %>
+  <%= form_with model:@user, url:information_edit_users_path, method: :patch do |f| %>
+  
+  <div class = "mt-2">プロフィール画像：
+  <%= f.file_field :image, accept:"image/*" %></div>
 
-プロフィール画像：
-<%= f.file_field :image, accept:"image/*" %><br>
+  <div class = "mt-2">ユーザーネーム：
+  <%= f.text_field :name %></div>
 
-ユーザーネーム：
-<%= f.text_field :name %><br>
+  <div class = "mt-2">メールアドレス：
+  <%= f.email_field :email %></div>
 
-メールアドレス：
-<%= f.email_field :email %><br>
+  <div class = "mt-2">パスワード（6文字以上）：
+  <%= f.password_field :password %></div>
 
-パスワード（6文字以上）：
-<%= f.password_field :password %><br>
+  <div class = "mt-2">パスワード（確認用）：
+  <%= f.password_field :password_confirmation %></div>
 
-パスワード（確認用）：
-<%= f.password_field :password_confirmation %><br>
+  <%= f.submit '更新',class:"btn btn-success" %>
+  <% end %>
 
-<%= f.submit '更新' %>
-<% end %>
-
-退会する方は<a href="/users/unsubscribe">こちら</a>
+  退会する方は<a href="/users/unsubscribe">こちら</a>
