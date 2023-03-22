@@ -13,12 +13,6 @@ class Public::CommentsController < ApplicationController
     redirect_to recipe_path(params[:recipe_id])
   end
 
-  def index
-    @user = current_user
-    comments = Comment.where(user_id: @user.id).pluck(:recipe_id)
-    @comment_recipes = Recipe.find(comments)
-  end
-
   private
   def comment_params
     params.require(:comment).permit(:comment)

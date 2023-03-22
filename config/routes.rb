@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     
     
     resources :users, only:[:show] do
+      member do
+        get 'favorites'
+        get 'comments'
+      end
+      
       collection do
         get 'information/edit' => "users#edit"
         patch 'information' => "users#update"
@@ -27,13 +32,7 @@ Rails.application.routes.draw do
     
     resources :recipes do
       resources :favorites, only:[:create, :destroy] 
-        collection do
-        get 'favorites' => "favorites#index"
-        end 
       resources :comments, only:[:create, :destroy]
-        collection do
-        get 'comments' => "comments#index"
-        end 
     end
     
   end

@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     @recipes = @user.recipes.page(params[:page])
   end 
   
@@ -21,6 +22,16 @@ class Public::UsersController < ApplicationController
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
+  end
+  
+  def favorites
+    @user = User.find(params[:id])
+    @favorite_recipes = @user.favorite_recipes
+  end 
+  
+  def comments
+    @user = User.find(params[:id])
+    @comment_recipes = @user.comment_recipes
   end 
   
   private
