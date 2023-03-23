@@ -41,7 +41,7 @@ class Public::UsersController < ApplicationController
       :email, 
       :encrypted_password, 
       :is_deleted, 
-      :image)
+      :profile_image)
   end
   
 end

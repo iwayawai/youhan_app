@@ -4,7 +4,7 @@
   <h3 class = "row mt-3 ml-2">会員情報編集</h3>
   </div>
 
-  <%= form_with model:@user, url:information_edit_users_path, method: :patch do |f| %>
+  <%= form_with model:@user, url:information_users_path, method: :patch do |f| %>
   
   <div class = "mt-2">プロフィール画像：
   <%= f.file_field :image, accept:"image/*" %></div>
