@@ -1,5 +1,0 @@
-.container { 
-  background-image: url("<%= asset_path('background.jpg') %>");
-  height: 800px;
-  background-size: cover;
-}

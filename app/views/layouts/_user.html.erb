@@ -3,27 +3,29 @@
   <%= image_tag user.get_profile_image(100,100) %>
   </div>
   <%= user.name %>
-　
+
   <div class = "row mt-5">
   <%= link_to favorites_user_path(user) do %>
     <%= image_tag 'pink_heart', size: "20x20" %>
     いいね
   <% end %>
   </div>
-  
+
   <div class = "row mt-3">
   <%= link_to comments_user_path(user) do %>
     <%= image_tag 'blue_star', size: "20x20" %>
     コメント
   <% end %>
   </div>
-  
-  <div class = "row mt-3">
+
   <% if user == current_user %>
-  <%= link_to "レシピ投稿", new_recipe_path, class:"btn btn-warning" %>
-  </div>
   <div class = "row mt-3">
-  <%= link_to "会員情報編集", information_edit_users_path, class:"btn btn-primary" %>
+  <%= link_to "レシピ投稿", new_recipe_path, class:"btn btn-outline-warning" %>
+  </div>
+  <% end %>
+  <% if user != "ゲストユーザー" %>
+  <div class = "row mt-3">
+  <%= link_to "会員情報編集", information_edit_users_path, class:"btn btn-outline-primary" %>
   <% end %>
   </div>
 </div>

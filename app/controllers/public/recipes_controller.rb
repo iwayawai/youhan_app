@@ -8,6 +8,7 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
     if @recipe.save
+    flash[:notice] = "レシピの投稿が成功しました！"
     redirect_to recipe_path(@recipe.id)
     else
     render :new
@@ -27,6 +28,7 @@ class Public::RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
+    flash[:notice] = "レシピを編集しました！"
     redirect_to recipe_path(@recipe.id)
   end
   

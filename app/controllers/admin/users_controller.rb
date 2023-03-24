@@ -11,6 +11,7 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    flash[:notice] = "退会処理を実行しました"
     render 'index'
   end 
   
