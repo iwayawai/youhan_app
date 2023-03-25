@@ -2,18 +2,22 @@
       <nav class="navbar navbar-expand-lg">
       <div class="container">
       <div class = "mt-4">
+      <%= link_to root_path do %>
       <%= image_tag 'rogo', size: "180x180"%>
+      <% end %>
       </div>
       <div class = "mt-4">
-      <%= form_tag({controller:"recipes", action:"index"}, method: :get) do %>
-      <%= text_field_tag :search, placeholder="キーワードを入力" %>
-      <%= submit_tag '検索' %>
-      <% end %>
-      
+        <div class = "search-tag">
+          <%= form_tag({controller:"recipes", action:"index"}, method: :get) do %>
+            <%= text_field_tag :search, '', class: "sbox4", placeholder: "レシピ" %>
+            <%= submit_tag '検索', id: "sbtn4" %>
+          <% end %>
+        </div>
+
       やる気度：
       <%= form_tag({controller:"recipes", action:"index"}, method: :get) do %>
-      <%= select_tag :star, options_for_select([['---選択してください---', ''], ["★", 1], ["★★", 2], ["★★★", 3]]) %>
-      <%= submit_tag '検索' %>
+      <%= select_tag :star, options_for_select([['---選択してください---', ''], ["★", 1], ["★★", 2], ["★★★", 3]]) , class: "sbox5" %>
+      <%= submit_tag '検索', id: "sbtn5" %>
       <% end %>
       </div>
 
