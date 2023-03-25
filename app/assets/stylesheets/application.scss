@@ -16,30 +16,61 @@
 
 
 .container {
-  background-image:  image-url('background.jpg');
-  background-size:cover;
+background-image:  image-url('background.jpg');
+background-size:cover;
 }
 
-.sbox4{
+.sbox1{
 height:30px;
-padding:0 10px; 
+padding:0 10px;
 left:0;
-top:0; 
+top:0;
 border-radius:25px;
 outline:0;
 background:#eee;
 }
 
-#sbtn4{
+#sbtn1{
 height:30px;
-width:50px;	
+width:50px;
 background:#FF9033;
 color:#fff;
 border:none;
 border-radius:25px;
 }
 
-#sbtn4:hover{
+#sbtn1:hover{
 color:#888;
 }
 
+.sbox2{
+height:30px;
+padding:0 10px;
+left:0;
+top:0;
+border-radius:25px;
+outline:0;
+background:#eee;
+}
+
+#sbtn2{
+height:30px;
+width:50px;
+background:#FFDD33;
+color:#fff;
+border:none;
+border-radius:25px;
+}
+
+#sbtn2:hover{
+color:#888;
+}
+
+.btn-primary {
+background:#92D3F5;
+color:#fff;
+}
+
+.footer{
+
+}
