@@ -14,7 +14,7 @@
   <% end %>
   </div>
 
-  <h4 class = "row mt-5 ml-2"><%= @recipe.name %></h4>
+  <h3 class = "row mt-5 ml-2"><%= @recipe.name %></h3>
   <div class = "row mt-3 ml-2">やる気度：<%= @recipe.star %></div>
   <div class = "row mt-3 ml-2">ジャンル：<%= @recipe.genre.name %></div>
 
@@ -45,25 +45,34 @@
     <div class = "row mt-3 ml-2">
     <%= image_tag 'blue_star', size: "20x20", class:"rounded-circle" %>
     <%= @recipe.comments.count %>コメント
+    </div>
+    <div class = "row mt-3 ml-2">
     <% @recipe.comments.each do |comment| %>
-      <%= link_to user_path(@user.id) do %>
+      <%= link_to user_path(comment.user.id) do %>
         <%= image_tag comment.user.get_profile_image(50,50), class:"rounded-circle" %>
       <% end %>
+      <div class = "row mt-3 ml-2">
       <%= comment.user.name %>
-      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+      </div>
+      <div class = "row mt-3 ml-5">
+      <%= comment.created_at.strftime('%Y/%m/%d') %>
+      </div>
+      <div class = "row mt-3 ml-5">
+      <%= comment.comment %>
+      </div>
       <% if comment.user == current_user %>
+        <div class = "row mt-3 ml-5">
         <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class:"btn-red" %>
+        </div>
       <% end %>
     <% end %>
     </div>
     <div class = "row mt-3 ml-2">
     <%= form_with model: [@recipe, @comment] do |f| %>
       <%= f.text_area :comment, rows: '5' %>
-    </div>
-    <div class = "row mt-3 ml-2">
-    <%= f.submit "投稿", class:"btn-green" %>
-    </div>
+      <%= f.submit "投稿", class:"btn-green" %>
     <% end %>
+    </div>
 
   <% else %>
   <div class = "row mt-3 ml-2"><%= image_tag 'black_heart', size: "20x20", class:"rounded-circle" %><%= @recipe.favorites.count %>いいね</div>
@@ -71,8 +80,8 @@
   <% end %>
 
   <% if @recipe.user == current_user %>
-  <div class = "row mt-3">
-    <%= link_to "編集", edit_recipe_path(@recipe), class:"btn-orange btn-block" %>
+  <div class = "row mt-3 ml-2">
+  <%= link_to "編集", edit_recipe_path(@recipe), class:"btn-orange btn-lg" %>
   </div>
   <% end %>
 </div>

@@ -38,7 +38,13 @@
       <% end %>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= recipe.name %></li>
+        <li class="list-group-item">
+        <div class = "button">
+        <%= link_to recipe_path(recipe.id) do %>
+          <%= recipe.name %>
+        <% end %>
+        </div>
+        </li>
         <li class="list-group-item">
         <%= link_to user_path(recipe.user.id) do %>
           <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle" %>
@@ -51,6 +57,8 @@
     <% end %>
   </div>
   <div class = "text-center">
+  <div class = "button">
     <a href='/recipes'>>>もっとレシピを探す</a>
+  </div>
   </div>
 </div>

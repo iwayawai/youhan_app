@@ -25,9 +25,11 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
+          <div class = "button">
           <%= link_to recipe_path(recipe.id) do %>
             <%= recipe.name %>
           <% end %>
+          </div>
           </li>
           <li class="list-group-item">ジャンル：<%= recipe.genre.name %></li>
           <li class="list-group-item">やる気度★：<%= recipe.star %></li>
