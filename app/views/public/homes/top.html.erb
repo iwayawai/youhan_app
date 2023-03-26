@@ -1,15 +1,19 @@
 <%= render 'layouts/public' %>
 <div class = "container">
    <div>
-  <%= flash[:notice] %>
-  </div>
+   <%= flash[:notice] %>
+   </div>
   <div class = "row">
     <h3 class = "ml-3 mb-3">YOU飯チョイス</h3>
     <h5 class = "ml-3 mt-2">～「やる気度」で検索できるレシピサイト～</h5>
   </div>
 
   <div class = "row">
-    <h4 class = "ml-3 mb-3">人気No.1レシピ</h4>
+    <h4 class = "ml-3 mb-3">
+    <%= image_tag 'dinner', size: "40x40" %>
+    人気No.1レシピ
+    <%= image_tag 'dinner', size: "40x40"%>
+    </h4>
   </div>
 
   <div class = "row mb-3">
@@ -46,6 +50,7 @@
     </div>
     <% end %>
   </div>
-  <div class = "text-center"><a href='/recipes'>>>もっとレシピを探す</a></div>
+  <div class = "text-center">
+    <a href='/recipes'>>>もっとレシピを探す</a>
   </div>
 </div>

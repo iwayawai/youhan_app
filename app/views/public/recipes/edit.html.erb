@@ -39,9 +39,9 @@
   <div class = "mt-2">ポイント：</div>
   <%= f.text_area :point, size: "50x5" %><br>
 
-  <%= f.submit '更新・保存', class:"btn btn-success" %>
+  <%= f.submit '更新・保存', class:"btn btn-green" %>
 
   <% if @recipe.user == current_user %>
-  <%= link_to '削除', recipe_path(@recipe), method: :delete, class:"btn btn-danger" %>
+  <%= link_to '削除', recipe_path(@recipe), method: :delete, class:"btn-red" %>
   <% end %>
   <% end %>

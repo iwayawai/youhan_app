@@ -1,14 +1,14 @@
 <%= render 'layouts/public' %>
 <div class = "container">
   <div class = "row">
-    <div class = "col-lg-4">
+    <div class = "col-lg-2">
     <%= render 'layouts/user', user:@user, recipe:@recipe %>
     </div>
     
-    <div class = "col-lg-8">
+    <div class = "col-lg-10">
     <h3>いいねしたレシピ一覧</h3>
     <% @favorite_recipes.each do |recipe|%>
-    <div class = "card" style="width: 22rem ;">
+    <div class = "card mx-auto" style="width: 22rem ;">
       <div class = "card-body">
       <%= link_to recipe_path(recipe.id) do %>
         <% if recipe.image.present? %>
@@ -34,4 +34,5 @@
     </div>
     </div>
   </div>
+</div>
 </div>

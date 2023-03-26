@@ -19,7 +19,7 @@
   <div class = "row mt-3 ml-2">ジャンル：<%= @recipe.genre.name %></div>
 
   <div class = "row mt-3 ml-2"><%= @recipe.introduction %></div>
- 
+
   <div class = "row mt-3 ml-2">調理時間：<%= @recipe.time %></div>
   <div class = "row mt-3 ml-2">費用目安：<%= @recipe.price %></div>
 
@@ -27,33 +27,33 @@
   <div class = "row mt-3 ml-2">手順：<%= @recipe.procedure %></div>
 
   <div class = "row mt-3 ml-2">ポイント：<%= @recipe.point %></div>
-  
-  <div class = "row mt-3 ml-2">  
+
+  <div class = "row mt-3 ml-2">
   <% if user_signed_in? %>
     <% if @recipe.favorited_by?(current_user) %>
       <%= link_to recipe_favorite_path(@recipe), method: :delete do %>
-        <%= image_tag 'pink_heart', size: "20x20" %>
+        <%= image_tag 'pink_heart', size: "20x20", class:"rounded-circle" %>
       <% end %>
       <%= @recipe.favorites.count %>いいね
     <% else %>
       <%= link_to recipe_favorites_path(@recipe), method: :post do %>
-        <%= image_tag 'black_heart', size: "20x20" %>
+        <%= image_tag 'black_heart', size: "20x20", class:"rounded-circle" %>
       <% end %>
     <%= @recipe.favorites.count %>いいね
-  <% end %>
+    <% end %>
   </div>
-    <div class = "row mt-3 ml-2">  
-    <%= image_tag 'blue_star', size: "20x20" %>
+    <div class = "row mt-3 ml-2">
+    <%= image_tag 'blue_star', size: "20x20", class:"rounded-circle" %>
     <%= @recipe.comments.count %>コメント
     <% @recipe.comments.each do |comment| %>
       <%= link_to user_path(@user.id) do %>
         <%= image_tag comment.user.get_profile_image(50,50), class:"rounded-circle" %>
       <% end %>
-    <%= comment.user.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-    <% if comment.user == current_user %>
-      <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class:"btn btn-danger" %>
-    <% end %>
+      <%= comment.user.name %>
+      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+      <% if comment.user == current_user %>
+        <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class:"btn-red" %>
+      <% end %>
     <% end %>
     </div>
     <div class = "row mt-3 ml-2">
@@ -61,19 +61,19 @@
       <%= f.text_area :comment, rows: '5' %>
     </div>
     <div class = "row mt-3 ml-2">
-      <%= f.submit "投稿", class:"btn btn-success" %>
+    <%= f.submit "投稿", class:"btn-green" %>
     </div>
     <% end %>
-      
-    <% else %>
-    <div class = "row mt-3 ml-2"><%= image_tag 'black_heart', size: "20x20" %><%= @recipe.favorites.count %>いいね</div>
-    <div class = "row mt-3 ml-2"><%= image_tag 'blue_star', size: "20x20" %><%= @recipe.comments.count %>コメント</div>
-    <% end %>
-      
-    <% if @recipe.user == current_user %>
-    <div class = "row mt-3">
-      <%= link_to "編集", edit_recipe_path(@recipe), class:"btn btn-warning btn-block" %>
-    </div>
-    <% end %>
-  
+
+  <% else %>
+  <div class = "row mt-3 ml-2"><%= image_tag 'black_heart', size: "20x20", class:"rounded-circle" %><%= @recipe.favorites.count %>いいね</div>
+  <div class = "row mt-3 ml-5"><%= image_tag 'blue_star', size: "20x20", class:"rounded-circle" %><%= @recipe.comments.count %>コメント</div>
+  <% end %>
+
+  <% if @recipe.user == current_user %>
+  <div class = "row mt-3">
+    <%= link_to "編集", edit_recipe_path(@recipe), class:"btn-orange btn-block" %>
+  </div>
+  <% end %>
+</div>
 </div>

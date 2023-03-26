@@ -5,7 +5,7 @@
   </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
+
   <div class="field mt-3">
     <%= f.label :"メールアドレス" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -17,12 +17,12 @@
   </div>
 
   <div class="actions mt-5">
-    <%= f.submit "ログイン", class:"btn btn-success" %>
+    <%= f.submit "ログイン", class: "btn-green" %>
   </div>
-  
+
   <a href="/users/password/new">パスワードをお忘れですか？</a><br />
   新規会員登録は<a href="/users/sign_up">こちら</a>
-  
+
 <% end %>
 </div>
 
