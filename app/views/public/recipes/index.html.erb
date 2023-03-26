@@ -1,32 +1,36 @@
 <%= render 'layouts/public' %>
 <div class = "container">
-  <div class = "row mt-3">
+  <div class = "row mt-1 mx-auto">
   <h3>レシピ一覧 全<%= @recipes.count %>件</h3>
   </div>
 
+  <div class = "row mt-2">
   <% @recipes.each do |recipe| %>
-  <div class = "card" style="width: 22rem ;">
-    <div class = "card-body">
-    <%= link_to recipe_path(recipe.id) do %>
-    <% if recipe.image.present? %>
-      <% if recipe.image.content_type.include? ('image/') %>
-      <%= image_tag recipe.image, size: "300x300" %>
-      <% else %>
-      <%= video_tag rails_blob_path(recipe.video) %>
+  <div class="col-lg-4">
+    <div class = "card" style="width: 22rem ;">
+      <div class = "card-body">
+      <%= link_to recipe_path(recipe.id) do %>
+        <% if recipe.image.present? %>
+          <% if recipe.image.content_type.include? ('image/') %>
+          <%= image_tag recipe.image, size: "300x300" %>
+          <% else %>
+          <%= video_tag rails_blob_path(recipe.video) %>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-    <% end %>
-    </div>
+      </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><%= recipe.name %></li>
-      <li class="list-group-item"> 
+      <li class="list-group-item">
       <%= link_to user_path(recipe.user.id) do %>
-        <%= image_tag recipe.user.get_profile_image(50,50) %>
+        <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle" %>
       <% end %>
       <%= recipe.user.name %>
-      <% end %>
       </li>
     </ul>
+    </div>
+  </div>
+  <% end %>
   </div>
 
 <%= paginate @recipes %>

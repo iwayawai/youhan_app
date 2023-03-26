@@ -11,17 +11,17 @@
   <div class = "row">
     <h4 class = "ml-3 mb-3">人気No.1レシピ</h4>
   </div>
-  
-  <div class = "row">
+
+  <div class = "row mb-3">
     <% @recipes.each do |recipe| %>
     <div class="col-lg-4">
-      <div class = "ml-2 mt-3">やる気度
+      <div class = "ml-3 mt-3">やる気度
       <% recipe.star.times do %>
         ★
       <% end %>
     </div>
 
-    <div class = "card" style="width: 22rem ;">
+    <div class = "card mx-auto" style="width: 22rem ;">
       <div class = "card-body">
       <%= link_to recipe_path(recipe.id) do %>
         <% if recipe.image.present? %>
@@ -37,7 +37,7 @@
         <li class="list-group-item"><%= recipe.name %></li>
         <li class="list-group-item">
         <%= link_to user_path(recipe.user.id) do %>
-          <%= image_tag recipe.user.get_profile_image(50,50) %>
+          <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle" %>
         <% end %>
         <%= recipe.user.name %>
         </li>
@@ -46,5 +46,6 @@
     </div>
     <% end %>
   </div>
+  <div class = "text-center"><a href='/recipes'>>>もっとレシピを探す</a></div>
   </div>
 </div>
