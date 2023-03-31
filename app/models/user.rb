@@ -4,6 +4,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_one_attached :profile_image
+  
+  validates :name, presence: true
 
   has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy

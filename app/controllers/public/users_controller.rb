@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @recipes = @user.recipes.page(params[:page])
+    @recipes = @user.recipes.page(params[:page]).order('id DESC')
   end 
   
   def edit
@@ -25,12 +25,12 @@ class Public::UsersController < ApplicationController
   end
   
   def favorites
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]).order('id DESC')
     @favorite_recipes = @user.favorite_recipes
   end 
   
   def comments
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]).order('id DESC')
     @comment_recipes = @user.comment_recipes
   end 
   

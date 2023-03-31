@@ -3,6 +3,17 @@
   <div class = "row mx-auto">
   <h3>新規レシピ投稿</h3>
   </div>
+  
+  <div class = "row mx-auto">
+  <% if @recipe.errors.any? %>
+  <%= @recipe.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  </div>
 
   <%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
 
