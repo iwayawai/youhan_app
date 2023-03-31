@@ -1,43 +1,43 @@
 <header>
+  <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-      <div class = "mt-4 ml-2">
-      <%= link_to root_path do %>
-        <%= image_tag 'rogo', class: "rounded-circle", size: "180x180" %>
-      <% end %>
-      </div>
-      <div class = "mt-4 ml-2">
-        <div class = "search-tag">
-          <%= form_tag({controller:"recipes", action:"index"}, method: :get) do %>
-            <%= text_field_tag :search, '', class: "sbox1", placeholder: "レシピ" %>
-            <%= submit_tag '検索', id: "sbtn1" %>
-          <% end %>
-        </div>
+    <div class = "mt-4 ml-2">
+    <%= link_to root_path do %>
+      <%= image_tag 'rogo', class: "rounded-circle", size: "180x180" %>
+    <% end %>
+    </div>
+    <div class = "mt-4 ml-2">
+    <div class = "search-tag">
+    <%= form_tag({controller:"recipes", action:"index"}, method: :get) do %>
+      <%= text_field_tag :search, '', class: "sbox1", placeholder: "レシピ" %>
+      <%= submit_tag '検索', id: "sbtn1" %>
+    <% end %>
+    </div>
 
-      やる気度：
-      <%= form_tag({controller:"recipes", action:"index"}, method: :get) do %>
-        <%= select_tag :star, options_for_select([['---選択してください---', ''], ["★", 1], ["★★", 2], ["★★★", 3]]) , class: "sbox2" %>
-        <%= submit_tag '検索', id: "sbtn2" %>
-      <% end %>
-      </div>
+    やる気度：
+    <%= form_tag({controller:"recipes", action:"index"}, method: :get) do %>
+      <%= select_tag :star, options_for_select([['---選択してください---', ''], ["★", 1], ["★★", 2], ["★★★", 3]]) , class: "sbox2" %>
+      <%= submit_tag '検索', id: "sbtn2" %>
+    <% end %>
+    </div>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item mt-2 mr-3"><%= link_to "マイページ", user_path(current_user.id), class: "btn-green" %></li>
-          <li class="nav-item mt-2 mr-3"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn-red" %></li>
-          <li class="nav-item mt-2 mr-3"><%= link_to "ABOUT", about_path, class: "btn-purple" %></li>
-        <% else %>
-          <li class="nav-item mr-3 mb-2"><%= link_to "新規登録", new_user_registration_path, class: "btn-blue" %></li>
-          <li class="nav-item mr-3 mb-2"><%= link_to "ログイン", new_user_session_path, class: "btn-green" %></li>
-          <li class="nav-item mr-3 mb-2"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn-yellow" %>
-          <li class="nav-item mr-3 mb-2"><%= link_to "ABOUT", about_path, class: "btn-purple" %></li>
-        <% end %>
-        </ul>
-      </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item mt-2 mr-3"><%= link_to "マイページ", user_path(current_user.id), class: "btn-green" %></li>
+        <li class="nav-item mt-2 mr-3"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn-red" %></li>
+        <li class="nav-item mt-2 mr-3"><%= link_to "ABOUT", about_path, class: "btn-purple" %></li>
+      <% else %>
+        <li class="nav-item mr-3 mb-2"><%= link_to "新規登録", new_user_registration_path, class: "btn-blue" %></li>
+        <li class="nav-item mr-3 mb-2"><%= link_to "ログイン", new_user_session_path, class: "btn-green" %></li>
+        <li class="nav-item mr-3 mb-2"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn-yellow" %>
+        <li class="nav-item mr-3 mb-2"><%= link_to "ABOUT", about_path, class: "btn-purple" %></li>
+      <% end %>
+      </ul>
     </div>
   </nav>
+  </div>
 </header>
