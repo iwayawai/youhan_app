@@ -9,10 +9,12 @@ class Admin::UsersController < ApplicationController
   end 
   
   def destroy
+    @users = User.page(params[:page])
     @user = User.find(params[:id])
-    @user.destroy
+    @user.update(is_deleted: true)
+    reset_session
     flash[:notice] = "退会処理を実行しました"
-    render 'index'
+    render :index
   end 
   
   private

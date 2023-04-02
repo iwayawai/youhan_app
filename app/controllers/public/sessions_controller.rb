@@ -2,6 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :authenticate_user!, except: [:top,:index,:show,:about]
 
   # GET /resource/sign_in
   # def new

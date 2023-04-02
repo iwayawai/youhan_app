@@ -8,10 +8,10 @@
   <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
     <%= f.text_field :name %>
 
-    <%= f.submit '新規登録' %>
+    <%= f.submit '新規登録',class:"btn btn-success" %>
   <% end %>
 
-  <table class="table mt-5">
+  <table class="table mt-5 mb-2">
     <thead>
       <tr>
         <th>ジャンル</th>
