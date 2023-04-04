@@ -19,6 +19,7 @@ class Recipe < ApplicationRecord
   belongs_to :genre
   belongs_to :user
 
+
    def favorited_by?(user)
      favorites.exists?(user_id: user.id)
    end

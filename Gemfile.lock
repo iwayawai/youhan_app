@@ -90,6 +90,8 @@ GEM
     devise-i18n (1.10.3)
       devise (>= 4.8.0)
     devise-i18n-views (0.3.7)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.12.0)
     ffi (1.15.5)
     globalid (1.1.0)
@@ -277,6 +279,7 @@ DEPENDENCIES
   devise
   devise-i18n
   devise-i18n-views
+  enum_help
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   kaminari (~> 1.2.1)

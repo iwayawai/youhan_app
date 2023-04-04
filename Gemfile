@@ -62,3 +62,4 @@ gem 'kaminari','~> 1.2.1'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem "enum_help"
