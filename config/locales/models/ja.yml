@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      recipe: レシピ
+    attributes:
+      recipe:
+        name: レシピ名
+        introduction: レシピ説明文
+        star: やる気度
+        genre: ジャンル
+        image: 画像
+        time: 調理時間
+        price: 費用目安
+        ingredient: 食材（分量）
+        procedure: 手順
+        point: ポイント
+        

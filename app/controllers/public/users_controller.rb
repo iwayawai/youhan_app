@@ -25,13 +25,13 @@ class Public::UsersController < ApplicationController
   end
   
   def favorites
-    @user = User.find(params[:id]).order('id DESC')
-    @favorite_recipes = @user.favorite_recipes
+    @user = User.find(params[:id])
+    @favorite_recipes = @user.favorite_recipes.order('id DESC')
   end 
   
   def comments
-    @user = User.find(params[:id]).order('id DESC')
-    @comment_recipes = @user.comment_recipes
+    @user = User.find(params[:id])
+    @comment_recipes = @user.comment_recipes.order('id DESC')
   end 
   
   private

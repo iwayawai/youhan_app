@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
   
   def index
     @users = User.page(params[:page])
@@ -26,5 +27,12 @@ class Admin::UsersController < ApplicationController
       :is_deleted, 
       :image)
   end
+  
+  def authenticate_admin!
+    unless current_user.admin?
+      redirect_to new_admin_session_path, alert: "アクセス権限がありません。"
+    end
+  end
+  
   
 end
