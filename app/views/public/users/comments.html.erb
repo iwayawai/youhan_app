@@ -14,7 +14,7 @@
         <% if recipe.image.present? %>
           <%= image_tag recipe.image, size: "300x300" %>
         <% else %>
-          <video muted width="300" height="300" src="<%= rails_blob_path(recipe.video) %>", size:"300X300" type="video/mp4" controls></video>
+          <video muted width="300" height="300" src="<%= rails_blob_path(recipe.video) %>" type="video/mp4" controls></video>
         <% end %>
       <% end %> 
       </div>
@@ -37,5 +37,5 @@
     <% end %>
     </div>
   </div>
-  <%= paginate @recipe_page %>
+  <%= paginate @comment_recipe %>
 </div>

@@ -1,7 +1,7 @@
 <%= render 'layouts/public' %>
 <div class = "container">
   <div class = "row mx-auto">
-  <h3>レシピ一覧 全<%= @recipes.count %>件</h3>
+  <h3>レシピ一覧 全<%= @all_recipes.count %>件</h3>
   </div>
 
   <div class = "row mt-2 mx-auto">
@@ -13,7 +13,7 @@
         <% if recipe.image.present? %>
           <%= image_tag recipe.image, size: "300x300" %>
         <% else %>
-          <video muted width="300" height="300" src="<%= rails_blob_path(recipe.video) %>", size:"300X300" type="video/mp4" controls></video>
+          <video muted width="300" height="300" src="<%= rails_blob_path(recipe.video) %>" type="video/mp4" controls></video>
         <% end %>
       <% end %>
       </div>
@@ -37,6 +37,6 @@
   <% end %>
   </div>
   <div class = "pagination">
-  <%= paginate @recipe_page %>
+  <%= paginate @recipes %>
   </div>
 </div>
