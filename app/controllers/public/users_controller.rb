@@ -11,6 +11,7 @@ class Public::UsersController < ApplicationController
   
   def update
     @user = current_user
+    @user.profile_image.attach(params[:user][:profile_image]) if @user.profile_image.blank?
     @user.update(user_params)
     flash[:notice] = "会員情報を更新しました"
     redirect_to user_path(@user)
@@ -27,11 +28,13 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     @favorite_recipes = @user.favorite_recipes.order('id DESC')
+    @recipe_page = @favorite_recipes.page(params[:page])
   end 
   
   def comments
     @user = User.find(params[:id])
     @comment_recipes = @user.comment_recipes.order('id DESC')
+    @recipe_page = @comment_recipes.page(params[:page])
   end 
   
   private

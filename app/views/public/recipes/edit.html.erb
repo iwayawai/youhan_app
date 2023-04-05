@@ -42,7 +42,7 @@
   <%= f.submit '更新・保存', class:"btn-green" %>
 
   <% if @recipe.user == current_user %>
-  <%= link_to '削除', recipe_path(@recipe), method: :delete, class:"btn-red" %>
+  <%= link_to '削除', recipe_path(@recipe), method: :delete, data:{ confirm: "本当に削除しますか？" }, class:"btn-red" %>
   <% end %>
   <% end %>
   </div>

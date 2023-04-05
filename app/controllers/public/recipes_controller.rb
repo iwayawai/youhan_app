@@ -40,25 +40,26 @@ class Public::RecipesController < ApplicationController
   
   def index
     if params[:search] == nil
-      @recipes = Recipe.page(params[:page]).order('id DESC')
+      @recipes = Recipe.all.order('id DESC')
     elsif params[:search] == ''
-      @recipes = Recipe.page(params[:page]).order('id DESC')
+      @recipes = Recipe.all.order('id DESC')
     else
       genre = Genre.find_by(name: params[:search]) 
-      @recipes = Recipe.where("ingredient LIKE ? or name LIKE ? or genre_id LIKE ?",'%' + params[:search] + '%','%' + params[:search] + '%', genre&.id).page(params[:page]).order('id DESC')
+      @recipes = Recipe.where("ingredient LIKE ? or name LIKE ? or genre_id LIKE ?",'%' + params[:search] + '%','%' + params[:search] + '%', genre&.id).all.order('id DESC')
     end 
     
     if params[:star].present?
       if params[:star] == "1"
-        @recipes = Recipe.where(star:'1').page(params[:page]).order('id DESC')
+        @recipes = Recipe.where(star:'1').all.order('id DESC')
       elsif params[:star] == "2"
-        @recipes = Recipe.where(star:'2').page(params[:page]).order('id DESC')
+        @recipes = Recipe.where(star:'2').all.order('id DESC')
       elsif params[:star] == "3"
-        @recipes = Recipe.where(star:'3').page(params[:page]).order('id DESC')
+        @recipes = Recipe.where(star:'3').all.order('id DESC')
       else
-        @recipes = Recipe.page(params[:page]).order('id DESC')
+        @recipes = Recipe.all.order('id DESC')
       end
     end
+  @recipe_page = @recipes.page(params[:page])
     
   end 
   

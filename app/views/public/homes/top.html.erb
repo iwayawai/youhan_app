@@ -29,11 +29,9 @@
       <div class = "card-body">
       <%= link_to recipe_path(recipe.id) do %>
         <% if recipe.image.present? %>
-          <% if recipe.image.content_type.include? ('image/') %>
           <%= image_tag recipe.image, size: "300x300" %>
-          <% else %>
-          <%= video_tag rails_blob_path(recipe.video) %>
-          <% end %>
+        <% else %>
+          <video muted width="300" height="300" src="<%= rails_blob_path(recipe.video) %>", size:"300X300" type="video/mp4" controls></video>
         <% end %>
       <% end %>
       </div>

@@ -12,7 +12,7 @@ class Recipe < ApplicationRecord
   validates :ingredient, presence: true
   validates :procedure, presence: true
   validates :point, presence: true, length: { maximum: 50 }
-  validates :required_either_image_or_video, presence: true
+  validate :required_either_image_or_video
 
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

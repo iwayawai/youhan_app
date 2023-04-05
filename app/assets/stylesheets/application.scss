@@ -217,3 +217,22 @@ transition: 0.3s;
 width: 40px;
 height: 40px;
 }
+
+.pagination {
+justify-content: center;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #d2691e;
+}
+
+.pagination>.active>a {
+  background: #800000;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+  color: #d2691e;
+}
