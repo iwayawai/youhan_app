@@ -16,7 +16,7 @@
 
 
 .container {
-background-image:  image-url('background.jpg');
+background-image: image-url("background.jpg");
 background-size:cover;
 }
 
@@ -223,16 +223,16 @@ justify-content: center;
 }
 
 .pagination>li>a {
-  border: none;
-  color: #d2691e;
+border: none;
+color: #d2691e;
 }
 
 .pagination>.active>a {
-  background: #800000;
-  border-radius: 15px;
+background: #800000;
+border-radius: 15px;
 }
 
 .pagination>li>a:hover {
-  border-radius: 15px;
-  color: #d2691e;
+border-radius: 15px;
+color: #d2691e;
 }
