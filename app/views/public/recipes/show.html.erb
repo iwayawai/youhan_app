@@ -3,6 +3,17 @@
   <div>
   <%= flash[:notice] %>
   </div>
+  
+  <div class = "row mx-auto">
+  <% if @recipe.errors.any? %>
+  <%= @recipe.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  </div>
 
   <div class = "row justify-content-center">
     <% if @recipe.image.present? %>
