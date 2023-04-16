@@ -8,7 +8,7 @@
     <div class = "col-lg-10">
     <h3>コメントしたレシピ一覧</h3>
     <% @comment_recipes.each do |recipe| %>
-    <div class = "card mx-auto" style="width: 22rem ;">
+    <div class = "card mx-auto" style="width: 350px ;">
       <div class = "card-body">
       <%= link_to recipe_path(recipe.id) do %>
         <% if recipe.image.present? %>
