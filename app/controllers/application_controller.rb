@@ -1,11 +1,17 @@
 class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
 
-before_action :authenticate_user!, except: [:top,:index,:show,:about]
-before_action :authenticate_admin!, if: :admin_url 
+before_action :authenticate_user!, except: [:top,:index,:show,:about], if: :user_url
+before_action :authenticate_admin!, if: :admin_url
+
+private
 
 def admin_url
   request.fullpath.include?("/admin")
+end
+
+def user_url
+  !request.fullpath.include?("/admin")
 end
 
 def after_sign_in_path_for(resource)

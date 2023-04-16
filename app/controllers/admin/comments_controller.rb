@@ -1,5 +1,4 @@
 class Admin::CommentsController < ApplicationController
-
   def index
     @user = User.find(params[:user_id])
     comments = Comment.where(user_id: @user.id).pluck(:recipe_id)
@@ -9,12 +8,12 @@ class Admin::CommentsController < ApplicationController
 
   def destroy
     Comment.find(params[:id]).destroy
-    flash[:notice] = "コメントを削除しました"
-    redirect_to admin_user_comments_path(params[:user_id])
+    redirect_to admin_user_comments_path(params[:user_id]), notice: "コメントを削除しました"
   end
 
   private
   def comment_params
     params.require(:comment).permit(:comment)
   end
+
 end
