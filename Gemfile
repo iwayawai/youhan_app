@@ -63,6 +63,7 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem "enum_help"
+gem 'aws-sdk-s3'
 
 gem 'dotenv-rails'
 group :production do
