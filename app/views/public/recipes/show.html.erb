@@ -5,12 +5,14 @@
   </div>
 
   <div class = "row justify-content-center">
-    <% if @recipe.image.present? %>
+    <% if @recipe.image.attached? %>
       <%= image_tag @recipe.image, size: "300x300" %>
     <% end %>
 
-    <% if @recipe.video.present? %>
-      <video muted width="300" height="300" src="<%= rails_blob_path(@recipe.video) %>", size:"300x300" type="video/mp4" controls></video>
+    <% if @recipe.video.attached? %>
+      <%#= video_tag polymorphic_path(@recipe.video), controls: true%>
+      <video  src="<%= rails_blob_path(@recipe.video) %>?<%= SecureRandom.hex(10) %>" type="video/mp4" controls autoplay muted></video>
+
     <% end %>
   </div>
 
@@ -70,7 +72,7 @@
         <% end %>
     <% end %>
     </div>
-    
+
     <div class = "row mt-3 ml-2">
       <%= form_with model: [@recipe, @comment] do |f| %>
         <%= f.text_area :comment, rows: '5' %>
