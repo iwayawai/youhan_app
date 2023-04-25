@@ -1,55 +1,55 @@
 <%= render 'layouts/public' %>
 <div class = "container">
   <div class = "row mx-auto">
-  <h3>新規レシピ投稿</h3>
+    <h3>新規レシピ投稿</h3>
   </div>
   
   <div class = "row mx-auto">
-  <% if @recipe.errors.any? %>
-  <%= @recipe.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @recipe.errors.full_messages.each do |message| %>
+    <% if @recipe.errors.any? %>
+      <%= @recipe.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
-  </ul>
-  <% end %>
+    </ul>
+    <% end %>
   </div>
 
   <%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
 
   <div class = "mt-2">レシピ名：
-  <%= f.text_field :name, placeholder: "きゅうりとハムのサラダ" %></div>
+    <%= f.text_field :name, placeholder: "きゅうりとハムのサラダ" %></div>
 
   <div class = "mt-2">やる気度：
-  <%= f.select :star,[ ["★", 1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %></div>
+    <%= f.select :star,[ ["★", 1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %></div>
 
   <div class = "mt-2">ジャンル：
-  <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %></div>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %></div>
 
   <div class = "mt-2">レシピ説明文：</div>
-  <%= f.text_area :introduction, size: "50x5", placeholder:"時短＆おいしい！シンプルなサラダ" %><br>
+    <%= f.text_area :introduction, size: "50x5", placeholder:"時短＆おいしい！シンプルなサラダ" %><br>
 
   <div class = "mt-2">レシピ動画：
-  <%= f.file_field :video, accept:"video/mp4" %></div>
+    <%= f.file_field :video, accept:"video/mp4" %></div>
 
   <div class = "mt-2">レシピ画像：
-  <%= f.file_field :image, accept:"image/*" %></div>
+    <%= f.file_field :image, accept:"image/*" %></div>
 
   <div class = "mt-2">調理時間：
-  <%= f.text_field :time, placeholder: "５分" %></div>
+    <%= f.text_field :time, placeholder: "５分" %></div>
 
   <div class = "mt-2">費用目安：
-  <%= f.text_field :price, placeholder: "１００円" %></div>
+    <%= f.text_field :price, placeholder: "１００円" %></div>
 
   <div class = "mt-2">食材（分量）：</div>
-  <%= f.text_area :ingredient, size: "50x5", placeholder:"きゅうり・・・１本" %><br>
+    <%= f.text_area :ingredient, size: "50x5", placeholder:"きゅうり・・・１本" %><br>
 
   <div class = "mt-2">手順：</div>
-  <%= f.text_area :procedure, size: "50x5", placeholder:"①きゅうりを一口サイズに輪切り。" %><br>
+    <%= f.text_area :procedure, size: "50x5", placeholder:"①きゅうりを一口サイズに輪切り。" %><br>
 
   <div class = "mt-2">ポイント：</div>
-  <%= f.text_area :point, size: "50x5", placeholder:"きゅうりを薄く切ること！" %><br>
+    <%= f.text_area :point, size: "50x5", placeholder:"きゅうりを薄く切ること！" %><br>
 
   <%= f.submit '新規投稿', class:"btn-green" %>
   <% end %>
-  </div>
+</div>

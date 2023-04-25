@@ -1,8 +1,8 @@
 <%= render 'layouts/public' %>
 <div class = "container">
-   <div>
-   <%= flash[:notice] %>
-   </div>
+  <div>
+    <%= flash[:notice] %>
+  </div>
   <div class = "row">
     <h3 class = "ml-3 mb-3">YOU飯チョイス</h3>
     <h5 class = "ml-3 mt-2">～「やる気度」で検索できるレシピサイト～</h5>
@@ -10,9 +10,9 @@
 
   <div class = "row">
     <h4 class = "ml-3 mb-3">
-    <%= image_tag asset_path("dinner.jpg"), size: "40x40" %>
-    人気No.1レシピ
-    <%= image_tag asset_path("dinner.jpg"), size: "40x40" %>
+      <%= image_tag asset_path("dinner.jpg"), size: "40x40" %>
+      人気No.1レシピ
+      <%= image_tag asset_path("dinner.jpg"), size: "40x40" %>
     </h4>
   </div>
 
@@ -23,9 +23,9 @@
       <% recipe.star.times do %>
         ★
       <% end %>
-    </div>
+      </div>
 
-    <div class = "card mx-auto" style="width: 22rem ;">
+      <div class = "card mx-auto" style="width: 22rem ;">
       <div class = "card-body">
       <%= link_to recipe_path(recipe.id) do %>
         <% if recipe.image.present? %>
@@ -35,22 +35,22 @@
         <% end %>
       <% end %>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-        <div class = "button">
-        <%= link_to recipe_path(recipe.id) do %>
-          <%= recipe.name %>
-        <% end %>
-        </div>
-        </li>
-        <li class="list-group-item">
-        <%= link_to user_path(recipe.user.id) do %>
-          <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle" %>
-        <% end %>
-        <%= recipe.user.name %>
-        </li>
-      </ul>
-    </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class = "button">
+              <%= link_to recipe_path(recipe.id) do %>
+                <%= recipe.name %>
+              <% end %>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <%= link_to user_path(recipe.user.id) do %>
+              <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle" %>
+            <% end %>
+          <%= recipe.user.name %>
+          </li>
+        </ul>
+      </div>
     </div>
     <% end %>
   </div>

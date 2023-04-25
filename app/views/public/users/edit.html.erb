@@ -1,32 +1,32 @@
 <%= render 'layouts/public' %>
 <div class = "container">
   <div class = "row">
-  <h3 class = "row mt-3 ml-2">会員情報編集</h3>
+    <h3 class = "row mt-3 ml-2">会員情報編集</h3>
   </div>
 
   <%= form_with model:@user, url:information_users_path, method: :patch do |f| %>
   
   <div class = "mt-2">プロフィール画像：
-  <%= f.file_field :profile_image, accept:"image/*" %></div>
+    <%= f.file_field :profile_image, accept:"image/*" %></div>
 
   <div class = "mt-2">ユーザーネーム：
-  <%= f.text_field :name %></div>
+    <%= f.text_field :name %></div>
 
   <div class = "mt-2">メールアドレス：
-  <%= f.email_field :email %></div>
+    <%= f.email_field :email %></div>
 
   <div class = "mt-2">パスワード（6文字以上）：
-  <%= f.password_field :password %></div>
+    <%= f.password_field :password %></div>
 
   <div class = "mt-2">パスワード（確認用）：
-  <%= f.password_field :password_confirmation %></div>
+    <%= f.password_field :password_confirmation %></div>
   
   <div class = "mt-2">
-  <%= f.submit '更新',class:"btn-green" %></div>
+    <%= f.submit '更新',class:"btn-green" %></div>
   <% end %>
   
   <div class = "button mt-2">  
-  退会する方は
+    退会する方は
   <a href="/users/unsubscribe">こちら</a>
   </div>
-  </div>
+</div>

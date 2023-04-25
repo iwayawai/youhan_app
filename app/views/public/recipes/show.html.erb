@@ -1,7 +1,7 @@
 <%= render 'layouts/public' %>
 <div class = "container">
   <div>
-  <%= flash[:notice] %>
+    <%= flash[:notice] %>
   </div>
 
   <div class = "row justify-content-center">
@@ -12,11 +12,10 @@
     <% if @recipe.video.attached? %>
       <%#= video_tag polymorphic_path(@recipe.video), controls: true%>
       <video muted width="300" height="300" src="<%= rails_blob_path(@recipe.video) %>?<%= SecureRandom.hex(10) %>", size:"300x300" type="video/mp4" controls></video>
-
     <% end %>
   </div>
 
-  <h4 class = "row mt-5 ml-2"><%= @recipe.name %></h3>
+  <h4 class = "row mt-5 ml-2"><%= @recipe.name %></h4>
   <div class = "row mt-3 ml-2">やる気度★：<%= @recipe.star %></div>
   <div class = "row mt-3 ml-2">ジャンル：<%= @recipe.genre.name %></div>
 
@@ -44,35 +43,35 @@
         <%= link_to recipe_favorites_path(@recipe), method: :post do %>
           <%= image_tag asset_path("black_heart.jpg"), class:"rounded-circle", size: "20x20" %>
         <% end %>
-      <%= @recipe.favorites.count %>いいね
+        <%= @recipe.favorites.count %>いいね
       <% end %>
   </div>
     <div class = "row mt-3 ml-2">
-    <%= image_tag asset_path("blue_star.jpg"), class:"rounded-circle", size: "20x20" %>
-    <%= @recipe.comments.count %>コメント
+      <%= image_tag asset_path("blue_star.jpg"), class:"rounded-circle", size: "20x20" %>
+      <%= @recipe.comments.count %>コメント
     </div>
     <div class = "row mt-3 ml-2">
-    <% @recipe.comments.each do |comment| %>
-      <%= link_to user_path(comment.user.id) do %>
-        <%= image_tag comment.user.get_profile_image(50,50), class:"rounded-circle" %>
-      <% end %>
-      <div class = "row mt-3 ml-2">
-      <%= comment.user.name %>
-      </div>
-      <div class = "row mt-3 ml-5">
-      <%= comment.created_at.strftime('%Y/%m/%d') %>
-      </div>
-      <div class = "row mt-3 ml-5">
-      <%= comment.comment %>
-      </div>
+      <% @recipe.comments.each do |comment| %>
+        <%= link_to user_path(comment.user.id) do %>
+          <%= image_tag comment.user.get_profile_image(50,50), class:"rounded-circle" %>
+        <% end %>
+        <div class = "row mt-3 ml-2">
+          <%= comment.user.name %>
+        </div>
+        <div class = "row mt-3 ml-5">
+          <%= comment.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div class = "row mt-3 ml-5">
+          <%= comment.comment %>
+        </div>
         <% if comment.user == current_user %>
           <div class = "row mt-3 ml-5">
-          <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class:"btn-red" %>
+            <%= link_to "削除", recipe_comment_path(comment.recipe, comment), method: :delete, class:"btn-red" %>
           </div>
         <% end %>
-    <% end %>
+      <% end %>
     </div>
-
+  
     <div class = "row mt-3 ml-2">
       <%= form_with model: [@recipe, @comment] do |f| %>
         <%= f.text_area :comment, rows: '5' %>
@@ -82,17 +81,17 @@
 
     <% else %>
     <div class = "row mt-3 ml-2">
-    <%= image_tag asset_path("black_heart.jpg"), class:"rounded-circle", size: "20x20" %>
-    <%= @recipe.favorites.count %>いいね</div>
+      <%= image_tag asset_path("black_heart.jpg"), class:"rounded-circle", size: "20x20" %>
+      <%= @recipe.favorites.count %>いいね</div>
     <div class = "row mt-3 ml-5">
-    <%= image_tag asset_path("blue_star.jpg"), class:"rounded-circle", size: "20x20" %>
-    <%= @recipe.comments.count %>コメント</div>
+      <%= image_tag asset_path("blue_star.jpg"), class:"rounded-circle", size: "20x20" %>
+      <%= @recipe.comments.count %>コメント</div>
     <% end %>
 
   <% if @recipe.user == current_user %>
-  <div class = "row mt-3 ml-2">
-  <%= link_to "編集", edit_recipe_path(@recipe), class:"btn-orange btn-lg" %>
-  </div>
+    <div class = "row mt-3 ml-2">
+      <%= link_to "編集", edit_recipe_path(@recipe), class:"btn-orange btn-lg" %>
+    </div>
   <% end %>
-</div>
+  </div>
 </div>

@@ -2,40 +2,40 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-lg-2">
-    <%= render 'layouts/user', user:@user %>
+      <%= render 'layouts/user', user:@user %>
     </div>
     
     <div class = "col-lg-10">
-    <h3>コメントしたレシピ一覧</h3>
-    <% @comment_recipes.each do |recipe| %>
-    <div class = "card mx-auto" style="width: 22rem ;">
+      <h3>コメントしたレシピ一覧</h3>
+      <% @comment_recipes.each do |recipe| %>
+      <div class = "card mx-auto" style="width: 22rem ;">
       <div class = "card-body">
-      <%= link_to recipe_path(recipe.id) do %>
-        <% if recipe.image.present? %>
-          <%= image_tag recipe.image, size: "300x300" %>
-        <% else %>
-          <video  muted width="300" height="300" src="<%= rails_blob_path(recipe.video) %>?<%= SecureRandom.hex(10) %>", size:"300x300" type="video/mp4" controls></video>
-        <% end %>
-      <% end %> 
+        <%= link_to recipe_path(recipe.id) do %>
+          <% if recipe.image.present? %>
+            <%= image_tag recipe.image, size: "300x300" %>
+          <% else %>
+            <video  muted width="300" height="300" src="<%= rails_blob_path(recipe.video) %>?<%= SecureRandom.hex(10) %>", size:"300x300" type="video/mp4" controls></video>
+          <% end %>
+        <% end %> 
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= recipe.name %></li>
-        <li class="list-group-item">
-        <%= link_to user_path(recipe.user.id) do %>
-          <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle" %>
-        <% end %>
-        <%= recipe.user.name %>
-        </li>
-        <li class="list-group-item">
-        <% recipe.comments.each do |comment| %>
-        <%= comment.created_at.strftime('%Y/%m/%d') %>
-        <%= comment.comment %>
-        <% end %>
-        </li>
-      </ul>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= recipe.name %></li>
+          <li class="list-group-item">
+            <%= link_to user_path(recipe.user.id) do %>
+              <%= image_tag recipe.user.get_profile_image(50,50), class:"rounded-circle" %>
+            <% end %>
+            <%= recipe.user.name %>
+          </li>
+          <li class="list-group-item">
+          <% recipe.comments.each do |comment| %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+            <%= comment.comment %>
+          <% end %>
+          </li>
+        </ul>
       </div>
-    <% end %>
+      <% end %>
     </div>
   </div>
-  <%= paginate @comment_recipes %>
+    <%= paginate @comment_recipes %>
 </div>

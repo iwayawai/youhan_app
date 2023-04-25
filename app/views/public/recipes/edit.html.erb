@@ -1,48 +1,48 @@
 <%= render 'layouts/public' %>
 <div class = "container">
   <div class = "row mx-auto">
-  <h3>レシピ編集</h3>
+    <h3>レシピ編集</h3>
   </div>
 
   <%= form_with model: @recipe, url:recipe_path, method: :patch do |f| %>
 
   <div class = "mt-2">レシピ名：
-  <%= f.text_field :name %></div>
+    <%= f.text_field :name %></div>
 
   <div class = "mt-2">やる気度：
-  <%= f.select :star,[ ["★",1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %></div>
+    <%= f.select :star,[ ["★",1], ["★★", 2], ["★★★", 3 ] ], prompt: "選択" %></div>
 
   <div class = "mt-2">ジャンル：
-  <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %></div>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択"}) %></div>
 
   <div class = "mt-2">レシピ説明文：</div>
-  <%= f.text_area :introduction, size: "50x5" %><br>
+    <%= f.text_area :introduction, size: "50x5" %><br>
 
   <div class = "mt-2">レシピ動画：
-  <%= f.file_field :video, accept:"video/mp4" %></div>
+    <%= f.file_field :video, accept:"video/mp4" %></div>
 
   <div class = "mt-2">レシピ画像：
-  <%= f.file_field :image, accept:"image/*" %></div>
+    <%= f.file_field :image, accept:"image/*" %></div>
 
   <div class = "mt-2">調理時間：
-  <%= f.text_field :time %></div>
+    <%= f.text_field :time %></div>
 
   <div class = "mt-2">費用目安：
-  <%= f.text_field :price %></div>
+    <%= f.text_field :price %></div>
 
   <div class = "mt-2">食材（分量）：</div>
-  <%= f.text_area :ingredient, size: "50x5" %><br>
+    <%= f.text_area :ingredient, size: "50x5" %><br>
 
   <div class = "mt-2">手順：</div>
-  <%= f.text_area :procedure, size: "50x5" %><br>
+    <%= f.text_area :procedure, size: "50x5" %><br>
 
   <div class = "mt-2">ポイント：</div>
-  <%= f.text_area :point, size: "50x5" %><br>
+    <%= f.text_area :point, size: "50x5" %><br>
 
   <%= f.submit '更新・保存', class:"btn-green" %>
 
-  <% if @recipe.user == current_user %>
-  <%= link_to '削除', recipe_path(@recipe), method: :delete, data:{ confirm: "本当に削除しますか？" }, class:"btn-red" %>
+    <% if @recipe.user == current_user %>
+      <%= link_to '削除', recipe_path(@recipe), method: :delete, data:{ confirm: "本当に削除しますか？" }, class:"btn-red" %>
+    <% end %>
   <% end %>
-  <% end %>
-  </div>
+</div>
