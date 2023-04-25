@@ -125,8 +125,8 @@ Rails.application.configure do
     enable_starttls_auto: true,
     port:                 587,
     domain:               'gmail.com',
-    user_name:            'iwayawai93@gmail.com',
-    password:             'zbpuoolfyaoyhdcg',
+    user_name:            ENV["MAILNAME"],
+    password:             ENV["MAILPASSWORD"],
     authentication:       :plain
   }
   
