@@ -1,13 +1,13 @@
 <%= render 'layouts/public' %>
 <div class = "container">
   <div class = "row mx-auto">
-    <h3>レシピ一覧 全<%= @all_recipes.count %>件</h3>
+    <h3>レシピ一覧 全<%= @recipes.total_count %>件</h3>
   </div>
 
-  <div class = "row mt-2 mx-auto">
+  <div class = "row mx-auto">
     <% @recipes.each do |recipe| %>
     <div class="col-lg-4">
-      <div class = "card" style="width: 22rem ;">
+      <div class = "card" style="width: 343px ;">
       <div class = "card-body">
         <%= link_to recipe_path(recipe.id) do %>
           <% if recipe.image.present? %>
